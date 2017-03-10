@@ -1,9 +1,10 @@
 
+#include "pendulum.h"
 #include "table.h"
 #include "house.h"
 #include "globals.h"
 
-static int DRAWAXIS = 1;
+static int DRAWAXIS = 0;
 static int DRAWSIGN = 1;
 static bool DRAWFRAME = true;
 static int currentView = 1;
@@ -24,7 +25,7 @@ static int spinI = 0;
 double ti=0.0;
 // std::chrono::steady_clock::time_point t1 = steady_clock::now();
 // std::chrono::steady_clock::time_point startTime = steady_clock::now();
-
+double simTime = 0;
 bool stopped=false;
 
 double initialRot=0;
@@ -68,7 +69,7 @@ double omegadot(double t, double theta, double omega)
 
 
 
-void step(double &t, double &theta, double &omega, int Nstep )
+void step(double &t, double &t2, double &theta, double &omega, double Nstep )
 {
   // Time step variables
   double dt, h; 
@@ -76,7 +77,10 @@ void step(double &t, double &theta, double &omega, int Nstep )
   double k1, k2, k3, k4, j1, j2, j3, j4;
   int i; 
 
-  h=100.0/Nstep;   // Try changing the value of Nstep above to see what happens 
+  // h=100.0/Nstep;   // Try changing the value of Nstep above to see what happens 
+  h = (t2 - t) / Nstep;
+    // printf("\n step t: %f, t2: %f\th: %f",t,t2,h);
+
 
       // Fourth-Order Runge-Kutta propagation step for second order dynamical systems
         k1 = thetadot(t,theta, omega); 
@@ -98,7 +102,7 @@ void step(double &t, double &theta, double &omega, int Nstep )
 
 
 
-#define Nstep 100000
+#define Nstep 10.0
 
 
 
@@ -146,7 +150,25 @@ void idle(){
     GLOBAL.CAMERA_POS.y += camMove_strafe * cos(GLOBAL.CAMERA_ANGLE_HORIZONTAL*M_PI/180.0);
 }
 
+void spin(){//change the current rotation angle to the previous plus the change
 
+    // std::chrono::steady_clock::time_point t2 = steady_clock::now();//now
+    // std::chrono::duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+    // ti += time_span.count() ;
+    // t1 = t2;//t1 is the previous
+
+
+
+    // for (int i=0; i<rotSpeed; i++ ) {//only step certain number of steps, this can be changed with arrow keys
+    // while(ti<t2){
+      // step( ti, theta, omega, Nstep);
+    // }
+    // } 
+    double currTime = glutGet(GLUT_ELAPSED_TIME)/1000.0 ;
+    while( (float)simTime < (float)currTime){ step(simTime,currTime, theta, omega, Nstep); }
+    // printf("\n%f ,  %f",simTime,glutGet(GLUT_ELAPSED_TIME)/1000.0 );
+
+}
 
 void drawAxes(int length)
 {   
@@ -245,10 +267,15 @@ void look(){
 
 void display(void){
 
+    spin();
+    // printf("\ntheta: %f",theta);
     Polygon faces[6];
 
     Polygon tableTop[6];
     Polygon tableLegs[4];
+    Polygon pendulumHolder[9];
+    Polygon pendStick[12];
+    // Polygon pendBall[6];
     look();//sets view
 
     glClear (GL_COLOR_BUFFER_BIT);
@@ -259,7 +286,7 @@ void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // reportView();//Places text informing user of current view
 
-    if (DRAWAXIS) drawAxes(10);//large axis is better
+    if (DRAWAXIS) drawAxes(100);//large axis is better
     defineHouse(faces);
     drawFilledHouse(faces);
     
@@ -269,6 +296,16 @@ void display(void){
     defineTableLeg(tableLegs);
     drawFourLegs(tableLegs);
   
+    glPopMatrix();
+    definePendulumHolder(pendulumHolder);
+    drawFilledPendulumHolder(pendulumHolder, 9);
+
+    definePendulumStick(pendStick);
+    // definePendulumBall(pendBall);
+
+
+    drawFilledPendulum(pendStick, 12, theta*180.0/M_PI);
+
     // glFlush();
     glutSwapBuffers();
     glutPostRedisplay();//Marks display to draw again
@@ -455,6 +492,22 @@ void mouse( int button, int state, int x, int y ){
 }
 
 int main(int argc, char** argv){
+
+    printf("\n\nInitial angle of the pendulum: \n");
+    std::cin>>initialRot;
+    theta=initialRot*M_PI/180;
+    // printf("\nLength of the pendulum: \n");
+    // std::cin>>penLength;
+    // printf("\nGravitational constant of pendulum: \n");
+    // std::cin>>grav;
+    // printf("\nDamping constant of pendulum: \n");
+    // std::cin>>b_FrictionConstant;
+    // printf("\nAmplitude of external impulse: \n");
+    // std::cin>>amplitudeOfDrivingForce;
+    // printf("\nFrequency of external impulse: \n");
+    // std::cin>>freqOfDrivingForce;
+    printf("\n\n\nStarting....\n\n\n");
+
 
     int menu, axis, view, sign, fill;
 

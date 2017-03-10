@@ -4,7 +4,7 @@ COPTS = -O2
 LIBS = -lGL -lGLU -lglut -ljpeg -lpng
 BUILD_DIR   = build
 
-OBJS = house.o matrixWork.o myUtils.o polygon.o vertex.o globals.o table.o main.o
+OBJS = house.o matrixWork.o myUtils.o polygon.o vertex.o globals.o table.o pendulum.o main.o
 BUILD_OBJS  = $(addprefix $(BUILD_DIR)/, $(OBJS))
 
 
@@ -39,6 +39,9 @@ $(BUILD_DIR)/vertex.o : vertex.cpp vertex.h
 
 $(BUILD_DIR)/table.o : table.cpp table.h
 	$(CC) $(CFLAGS) $(COPTS) table.cpp -c -o $(BUILD_DIR)/table.o
+
+$(BUILD_DIR)/pendulum.o : pendulum.cpp pendulum.h
+	$(CC) $(CFLAGS) $(COPTS) pendulum.cpp -c -o $(BUILD_DIR)/pendulum.o
 
 
 .PHONY: clean distclean

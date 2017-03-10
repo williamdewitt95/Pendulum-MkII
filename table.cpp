@@ -148,7 +148,7 @@ void drawFourLegs(Polygon *face){
 	glTranslated( 00.0, 15.0, 00.0);
 	drawFilledTableLeg(face);
 
-	glPushMatrix();
+	glPopMatrix();
 
 }
 
