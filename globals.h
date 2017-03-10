@@ -10,12 +10,22 @@
 #include <ratio>
 #include <ctime>
 #include <cmath>
+#include <png.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef struct colortype {
 	float red;
 	float green;
 	float blue;
 } colortype;
+
+struct texture2D{
+	std::string name;
+	unsigned int width;
+	unsigned int height;
+	GLuint texID;
+};
 
 class GLOBAL_SETTINGS{
 public:
@@ -41,6 +51,12 @@ public:
 	double CAMERA_ANGLE_VERTICAL;
 	double CAMERA_ANGLE_HORIZONTAL;
 
+	texture2D walls;
+	texture2D table;
+	texture2D pendulumStick;
+	texture2D pendulumHolder;
+	texture2D pendulumBall;
+
 };
 
 extern GLOBAL_SETTINGS GLOBAL;
@@ -48,4 +64,5 @@ extern GLOBAL_SETTINGS GLOBAL;
 void windowResize(int width, int height);
 void scaleMouse(int &x, int &y);
 void cameraMovement(int x, int y);
+void loadTextures(texture2D tex);
 #endif

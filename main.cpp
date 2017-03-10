@@ -545,7 +545,6 @@ int main(int argc, char** argv){
 
     glutAttachMenu(GLUT_MIDDLE_BUTTON);
 
-
     glutMainLoop();
     return 0;
 }

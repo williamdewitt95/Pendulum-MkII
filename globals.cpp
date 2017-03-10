@@ -81,3 +81,61 @@ void cameraMovement(int x, int y){//move the camera around not bound to the tank
 	glutWarpPointer(midX,GLOBAL.WINDOW_MAX_Y-midY);
 }
 
+void loadTextures(texture2D texture){//we will read raw image files (the 2d array of pixels directly)
+
+	 unsigned char *data;
+     FILE *file;
+     
+     // open texture data
+     // file = fopen(texture.name.c_str(), "rb");
+     // if (file == NULL) return;
+     
+     // // allocate buffer
+     // data = (unsigned char*) malloc(texture.width * texture.height * 4);
+     
+     // // read texture data
+     // fread(data, texture.width * texture.height * 4, 1, file);
+     // fclose(file);
+
+
+
+
+	GLuint textureID;
+	glGenTextures(1, &textureID);//allocate texture
+
+	glBindTexture(GL_TEXTURE_2D, textureID);//select texture as current
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);//should wrap
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);//should wrap
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	// glGenerateMipmap(GL_TEXTURE_2D);
+
+	// Black/white checkerboard
+	float pixels[] = {
+	    0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
+	};
+	// int width = 2;
+	// int height = 2;
+
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture.width, texture.height, 0, GL_RGB, GL_FLOAT, pixels);
+
+	texture.texID = textureID;//so we can reference it later
+
+// 	float vertices[] = {
+// //  Position      Color             Texcoords
+//     -0.5f,  0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, // Top-left
+//      0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // Top-right
+//      0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, // Bottom-right
+//     -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom-left
+// 	};
+
+
+
+
+
+}
+
