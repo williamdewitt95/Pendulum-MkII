@@ -56,6 +56,8 @@ public:
 	texture2D pendulumStick;
 	texture2D pendulumHolder;
 	texture2D pendulumBall;
+	texture2D floor;
+	texture2D ceiling;
 
 };
 
@@ -64,5 +66,5 @@ extern GLOBAL_SETTINGS GLOBAL;
 void windowResize(int width, int height);
 void scaleMouse(int &x, int &y);
 void cameraMovement(int x, int y);
-void loadTextures(texture2D tex);
+void loadTextures(texture2D &tex);
 #endif

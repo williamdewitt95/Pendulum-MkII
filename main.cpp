@@ -139,6 +139,47 @@ void init(void)
 {
     glClearColor (0.0, 0.0, 0.0, 0.0);
     glShadeModel (GL_FLAT);
+
+
+
+    GLOBAL.walls.name = "images/wall.data";
+    GLOBAL.walls.height=256;
+    GLOBAL.walls.width=256;
+    GLOBAL.walls.texID=0;
+    loadTextures(GLOBAL.walls);
+
+
+  
+    GLOBAL.table.name="images/table.data";
+    GLOBAL.table.height=204;
+    GLOBAL.table.width=204;
+    loadTextures(GLOBAL.table);
+
+    GLOBAL.floor.name="images/floor.data";
+    GLOBAL.floor.height=256;
+    GLOBAL.floor.width=256;
+    loadTextures(GLOBAL.floor);
+
+    GLOBAL.ceiling.name="images/ceiling.data";
+    GLOBAL.ceiling.height=256;
+    GLOBAL.ceiling.width=256;
+    loadTextures(GLOBAL.ceiling);
+
+    GLOBAL.pendulumHolder.name="images/steel.data";
+    GLOBAL.pendulumHolder.height=256;
+    GLOBAL.pendulumHolder.width=256;
+    loadTextures(GLOBAL.pendulumHolder);
+
+    GLOBAL.pendulumStick.name="images/stick.data";
+    GLOBAL.pendulumStick.height=256;
+    GLOBAL.pendulumStick.width=256;
+    loadTextures(GLOBAL.pendulumStick);
+
+    GLOBAL.pendulumBall.name="images/ball.data";
+    GLOBAL.pendulumBall.height=256;
+    GLOBAL.pendulumBall.width=256;
+    loadTextures(GLOBAL.pendulumBall);
+
 }
 
 void idle(){
@@ -268,7 +309,7 @@ void look(){
 void display(void){
 
     spin();
-    // printf("\ntheta: %f",theta);
+    // printf("theta: %f\n",theta);
     Polygon faces[6];
 
     Polygon tableTop[6];

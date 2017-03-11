@@ -5,6 +5,8 @@
 Polygon::Polygon(){//where x,y is the center
 	this->firstVertex = NULL;
 	this->numPoints = 0;
+	this->firstTextureVertex = NULL;
+	this->texture2DExists = false;
 }
  Polygon::Polygon(const Polygon& other){//where other is another polygon you want to copy
  	if(other.numPoints > 0){
@@ -15,33 +17,19 @@ Polygon::Polygon(){//where x,y is the center
 		this->firstVertex = NULL;
 		this->numPoints = 0;
 	}
+	if(other.firstTextureVertex != NULL){
+		this->firstTextureVertex = new Vertex(other.firstTextureVertex);
+		this->texture = other.texture;
+		this->texture2DExists=true;
+	}
+	else{
+		this->firstTextureVertex = NULL;
+		this->texture2DExists=false;
+	}
 
  }
 
-void Polygon::makeArrow(int xStretch, int yStretch){//this will initialize the arrow at the start of the program with center at the origin
-	//Make Points here
 
-	//xStretch,yStretch typically  600,300, all values listed will be assuming those
-
-	this->firstVertex= new Vertex(0.0-xStretch*1.0/2.0, 0.0-yStretch*1.0/3.0);//-300,-100
-	
-	this->firstVertex->next = new Vertex(xStretch*1.0/6.0, 0.0-yStretch*1.0/3.0);//vertex 1 next is 2 (100,-100)
-	Vertex * curr = this->firstVertex->next;
-
- 	curr->next = new Vertex(xStretch*1.0/12.0, 0.0-yStretch*1.0/2.0);//vertex 2 next is 3 (50,-150)
- 	curr = curr->next;
- 	curr->next = new Vertex(xStretch*1.0/2.0, 0.0);//vertex 3 next is 4 (300,0)
- 	curr = curr->next;
- 	curr->next = new Vertex(xStretch*1.0/12.0, yStretch*1.0/2.0);//vertex 4 next is 5 (50,150)
- 	curr = curr->next;
- 	curr->next = new Vertex(xStretch*1.0/6.0, yStretch*1.0/3.0);//vertex 5 next is 6 (100,100)
- 	curr = curr->next;
- 	curr->next = new Vertex(0.0-xStretch*1.0/2.0, yStretch*1.0/3.0);//vertex 6 next is 7 (-300,100)
- 	curr = curr->next;
- 	curr->next = this->firstVertex;//vertex 7 next is 1
-	
-	numPoints = 7;//tracks the number of vertices contained in the polygon
-}
 
 void Polygon::drawPolygonOutline(){//draw the lines
 	// printf("%lu\n",this->firstVertex);
@@ -62,7 +50,108 @@ void Polygon::drawPolygonOutline(){//draw the lines
 	glEnd();
 }
 
+void Polygon::drawPolygon(){
+	if(numPoints<3) return;//cannot draw a Polygon if less than three sides
 
+    glColor4ub(255,255,255,255);
+
+	if(texture2DExists){
+		glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, this->texture.texID);
+
+    }
+
+
+    GLUtesselator * tess = gluNewTess();
+    if(!tess) return;//tesselator failed somehow
+
+    gluTessCallback(tess, GLU_TESS_BEGIN, (GLvoid (*)())  glBegin); //cast to void pointer //Not sure if GLVoid is needded or not, but GL seems to have problems whemn using normal types *sometimes*
+    // gluTessCallback(tess, GLU_TESS_VERTEX, (GLvoid (*)()) glVertex3dv);
+	gluTessCallback(tess, GLU_TESS_VERTEX_DATA, (GLvoid(*)())vertexCB);    
+    gluTessCallback(tess, GLU_TESS_END, (GLvoid (*)()) glEnd);
+
+
+   	gluTessBeginPolygon(tess, this);//start the polygon, then the contour, then actually throw the points at it
+	gluTessBeginContour(tess);
+
+	long count =0;
+	Vertex * tempVertex = this->firstVertex;
+
+	do{
+		gluTessVertex(tess, (double *)tempVertex->coords, (void*)count);
+		count++;
+		tempVertex = tempVertex->next;
+	}while(tempVertex->next != this->firstVertex);
+
+	gluTessVertex(tess, (double *)tempVertex->coords, (void*)count);//do last one
+  
+    gluTessEndContour(tess);
+    gluTessEndPolygon(tess);
+
+
+    gluDeleteTess(tess);
+        // glBegin(GL_POLYGON);
+        // Vertex * temp = this->firstVertex;
+        // Vertex * tempTex = this->firstTextureVertex;
+        // while(temp->next != faces[j].firstVertex){//go through vertices and add them - not a for loop because house could have pentagons on two sides       
+        // 	glVertex3i(temp->getX(),
+        // 			   temp->getY(),
+        // 			   temp->getZ());
+        // 	glTexCoord3f(tempTex->getX(),tempTex->getY(),tempTex->getZ());
+        // 	temp = temp->next;
+        // 	tempTex = tempTex->next;
+        // }
+        // glVertex3i(temp->getX(),//add last vertex 
+        // 		   temp->getY(),
+        // 		   temp->getZ());
+        // glTexCoord3f(tempTex->getX(),tempTex->getY(),tempTex->getZ());
+
+        // glEnd();
+
+  	if(texture2DExists){
+
+        glBindTexture(GL_TEXTURE_2D, 0);
+        glDisable(GL_TEXTURE_2D);
+
+	}
+}
+
+void Polygon::vertexCB(void* data, void *polygon_data){
+	//data is simply the index of what point we're on
+	//polygon_data is the polygon we're tesselating
+	Polygon *poly = (Polygon*)polygon_data;
+	if(poly==NULL){
+		printf("poly is null\n");
+		return;
+	}
+	
+	Vertex * temp = poly->firstVertex;
+
+	if(poly->texture2DExists && poly->firstTextureVertex != NULL){
+		// printf("texture2DExists\n");
+
+		Vertex * tempTex = poly->firstTextureVertex;
+		for(long i=0;i<(long)data;i++){//go to the point the index asks for
+			temp = temp->next;
+			tempTex = tempTex->next;
+		}
+		// printf("data: %ld, tempTex x, y: %.1f, %.1f\ttemp x,y %.1f, %.1f\n",(long)data,tempTex->getX(), tempTex->getY(),temp->getX(), temp->getY());
+		glTexCoord2f(tempTex->getX(),tempTex->getY());
+	}
+	else{
+		// printf("texture no exist\n");
+		for(long i=0;i<(long)data;i++){
+			temp = temp->next;
+		}
+	}
+	glVertex3dv((double*)&temp->coords);
+
+}
+
+void Polygon::setTexture(texture2D &newTex){
+	this->texture = newTex;
+	this->texture2DExists=true;
+}
 
 
 int Polygon::getNumPoints(){
@@ -220,8 +309,33 @@ void Polygon::addVertex(double x, double y, double z){			//same as above, only u
 	}	
 }
 
+void Polygon::addTextureVertex(double x, double y, double z){			//same as above, only using x, y, and z doubles as inputs instead
+	if(this->firstTextureVertex == NULL){
+		this->firstTextureVertex = new Vertex(x, y, z);
+		// this->numPoints=1;
+		this->firstTextureVertex->next = this->firstTextureVertex;
+	}
+	else{
+		Vertex * temp = this->firstTextureVertex;
+		do{
+			temp = temp->next;
+		}while(temp->next != firstTextureVertex);
+		temp->next = new Vertex(x, y, z);
+		temp->next->next = this->firstTextureVertex;
+		// this->numPoints++;
+	}	
+}
+
 Polygon::~Polygon(){				//kill all the pointers when polygon goes out of scope
 	// printf("~polygon\n");
+if(this->firstTextureVertex != NULL){
+	Vertex * head = this->firstTextureVertex;
+	do{
+		Vertex * curr = head;
+		head = head->next;
+		delete curr;
+	}while(head!=firstTextureVertex);
+}
 if(this->firstVertex==NULL)
 	return;
 Vertex * head = this->firstVertex;
