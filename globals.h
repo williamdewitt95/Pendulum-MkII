@@ -13,6 +13,7 @@
 #include <png.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "SOIL.h"   
 
 typedef struct colortype {
 	float red;

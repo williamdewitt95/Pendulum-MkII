@@ -34,7 +34,7 @@ double theta=initialRot*M_PI/180;
 double omega=0;
 static double penLength = .9938;  // Length of pendulum
 static double grav = 9.80665;  // Normalized gravitational constant
-static double b_FrictionConstant = 0.10;  // Frictional damping constant
+static double b_FrictionConstant = 0.00;  // Frictional damping constant
 static double mass = 1.00;  // Mass in normalized gravitational units
 static double amplitudeOfDrivingForce = 0.00;  // Amplitude of initial driving force
 static double freqOfDrivingForce = 0.00;  // Frequency parameter of initial driving force
@@ -560,6 +560,8 @@ int main(int argc, char** argv){
     init ();
     glutDisplayFunc(display); 
     glutReshapeFunc(windowResize);
+
+    glewInit();
 
     glutKeyboardFunc(keyboard); /* Define Keyboard Handler */
     glutKeyboardUpFunc(keyboardUp);

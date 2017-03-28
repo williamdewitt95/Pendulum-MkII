@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -std=gnu++0x
 COPTS = -O2
-LIBS = -lGL -lGLU -lglut -ljpeg -lpng
+LIBS = -lGL -lGLU -lglut -ljpeg -lpng libSOIL.a
 BUILD_DIR   = build
 
 OBJS = house.o matrixWork.o myUtils.o polygon.o vertex.o globals.o table.o pendulum.o main.o
