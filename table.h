@@ -1,8 +1,9 @@
 #ifndef table3d
 #define table3d
 
-#include "polygon.h"
 #include "globals.h"
+
+#include "polygon.h"
 
 
 

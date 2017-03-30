@@ -89,23 +89,23 @@ void loadTextures(texture2D &texture){//we will read raw image files (the 2d arr
           // printf("\nloadTextures");
 
      // open texture data
-     file = fopen(texture.name.c_str(), "rb");
-    if (file == NULL){
-    	printf("file == NULL\n");
-    	return;
-	}
-     // allocate buffer
-     data = (unsigned char*) malloc(texture.width * texture.height * 3);
+ //     file = fopen(texture.name.c_str(), "rb");
+ //    if (file == NULL){
+ //    	printf("file == NULL\n");
+ //    	return;
+	// }
+ //     // allocate buffer
+ //     data = (unsigned char*) malloc(texture.width * texture.height * 3);
 
-     if(data == NULL){
-     	printf("\ndata null");
-     	return;
-     }
+ //     if(data == NULL){
+ //     	printf("\ndata null");
+ //     	return;
+ //     }
 
-     // read texture data
-     // int asdf = fread(data, texture.width * texture.height * 3, 1, file);
-     fclose(file);
-	SOIL_load_image(texture.name.c_str(), &texture.width, &texture.height, 0, SOIL_LOAD_RGB);
+ //     // read texture data
+ //     // int asdf = fread(data, texture.width * texture.height * 3, 1, file);
+ //     fclose(file);
+	data = SOIL_load_image(texture.name.c_str(), &texture.width, &texture.height, 0, SOIL_LOAD_RGB);
 
 
 

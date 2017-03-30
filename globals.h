@@ -1,10 +1,11 @@
 #ifndef GLOP_GLOBALS
 #define GLOP_GLOBALS
 
+#include <GL/glew.h> 
+
 #include <iostream>
 #include <string.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+
 #include <GL/glut.h>
 #include <chrono>
 #include <ratio>
@@ -13,7 +14,6 @@
 #include <png.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <GL/glew.h> 
 #include "SOIL.h"   
 
 typedef struct colortype {

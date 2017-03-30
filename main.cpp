@@ -1,8 +1,9 @@
 
+#include "globals.h"
+
 #include "pendulum.h"
 #include "table.h"
 #include "house.h"
-#include "globals.h"
 
 static int DRAWAXIS = 0;
 static int DRAWSIGN = 1;
@@ -142,42 +143,40 @@ void init(void)
 
 
 
-    GLOBAL.walls.name = "images/wall.data";
-    GLOBAL.walls.height=256;
-    GLOBAL.walls.width=256;
-    GLOBAL.walls.texID=0;
+    GLOBAL.walls.name = "images/wall.jpg";
+    // GLOBAL.walls.height=256;
+    // GLOBAL.walls.width=256;
+    // GLOBAL.walls.texID=0;
     loadTextures(GLOBAL.walls);
-
-
   
-    GLOBAL.table.name="images/table.data";
-    GLOBAL.table.height=204;
-    GLOBAL.table.width=204;
+    GLOBAL.table.name="images/table.jpg";
+    // GLOBAL.table.height=204;
+    // GLOBAL.table.width=204;
     loadTextures(GLOBAL.table);
 
-    GLOBAL.floor.name="images/floor.data";
-    GLOBAL.floor.height=256;
-    GLOBAL.floor.width=256;
+    GLOBAL.floor.name="images/floor.png";
+    // GLOBAL.floor.height=256;
+    // GLOBAL.floor.width=256;
     loadTextures(GLOBAL.floor);
 
-    GLOBAL.ceiling.name="images/ceiling.data";
-    GLOBAL.ceiling.height=256;
-    GLOBAL.ceiling.width=256;
+    GLOBAL.ceiling.name="images/ceiling.jpg";
+    // GLOBAL.ceiling.height=256;
+    // GLOBAL.ceiling.width=256;
     loadTextures(GLOBAL.ceiling);
 
-    GLOBAL.pendulumHolder.name="images/steel.data";
-    GLOBAL.pendulumHolder.height=256;
-    GLOBAL.pendulumHolder.width=256;
+    GLOBAL.pendulumHolder.name="images/steel.png";
+    // GLOBAL.pendulumHolder.height=256;
+    // GLOBAL.pendulumHolder.width=256;
     loadTextures(GLOBAL.pendulumHolder);
 
-    GLOBAL.pendulumStick.name="images/stick.data";
-    GLOBAL.pendulumStick.height=256;
-    GLOBAL.pendulumStick.width=256;
+    GLOBAL.pendulumStick.name="images/stick.jpeg";
+    // GLOBAL.pendulumStick.height=256;
+    // GLOBAL.pendulumStick.width=256;
     loadTextures(GLOBAL.pendulumStick);
 
-    GLOBAL.pendulumBall.name="images/ball.data";
-    GLOBAL.pendulumBall.height=256;
-    GLOBAL.pendulumBall.width=256;
+    GLOBAL.pendulumBall.name="images/ball.png";
+    // GLOBAL.pendulumBall.height=256;
+    // GLOBAL.pendulumBall.width=256;
     loadTextures(GLOBAL.pendulumBall);
 
 }

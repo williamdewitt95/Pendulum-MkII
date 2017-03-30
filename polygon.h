@@ -1,10 +1,11 @@
 #ifndef polygon
 #define polygon
 
+#include "globals.h"
+
 #include "vertex.h"
 #include "matrixWork.h"
 #include <GL/glut.h>
-#include "globals.h"
 
 
 class Polygon{

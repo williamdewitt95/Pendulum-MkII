@@ -1,8 +1,8 @@
 #ifndef house
 #define house
 
-#include "polygon.h"
 #include "globals.h"
+#include "polygon.h"
 
 
 typedef struct polygonList {

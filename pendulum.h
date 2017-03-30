@@ -1,8 +1,9 @@
 #ifndef pendulum
 #define pendulum
 
-#include "polygon.h"
 #include "globals.h"
+
+#include "polygon.h"
 
 
 typedef struct pendulumHolder {
