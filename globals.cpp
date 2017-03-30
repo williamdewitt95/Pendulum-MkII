@@ -105,7 +105,7 @@ void loadTextures(texture2D &texture){//we will read raw image files (the 2d arr
      // read texture data
      // int asdf = fread(data, texture.width * texture.height * 3, 1, file);
      fclose(file);
-	SOIL_load_image(texture.name, &texture.width, &texture.height, 0, SOIL_LOAD_RGB);
+	SOIL_load_image(texture.name.c_str(), &texture.width, &texture.height, 0, SOIL_LOAD_RGB);
 
 
 
@@ -150,7 +150,7 @@ void loadTextures(texture2D &texture){//we will read raw image files (the 2d arr
 // 	};
 
 
-    SOIL_free_image_data(image);
+    SOIL_free_image_data(data);
 
 
 

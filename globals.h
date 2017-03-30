@@ -13,6 +13,7 @@
 #include <png.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <GL/glew.h> 
 #include "SOIL.h"   
 
 typedef struct colortype {
@@ -23,8 +24,8 @@ typedef struct colortype {
 
 struct texture2D{
 	std::string name;
-	unsigned int width;
-	unsigned int height;
+	int width;
+	int height;
 	GLuint texID;
 };
 
