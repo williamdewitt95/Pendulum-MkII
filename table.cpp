@@ -56,10 +56,13 @@ void defineTableTop(Polygon * tableFaces){
     }
 
     {
-    tableFaces[1].addVertex(-10.0,-10.0, 09.00);//Left
-    tableFaces[1].addVertex(-10.0,-10.0, 10.00);
-    tableFaces[1].addVertex( 10.0,-10.0, 10.00);
     tableFaces[1].addVertex( 10.0,-10.0, 09.00);
+        tableFaces[1].addVertex( 10.0,-10.0, 10.00);
+
+        tableFaces[1].addVertex(-10.0,-10.0, 10.00);
+
+        tableFaces[1].addVertex(-10.0,-10.0, 09.00);//Left
+
 
     tableFaces[1].setTexture(GLOBAL.table);
     tableFaces[1].addTextureVertex(0.0, 0.0, 0.0);
@@ -95,10 +98,13 @@ void defineTableTop(Polygon * tableFaces){
     }
 
     {
-    tableFaces[4].addVertex( 10.0,-10.0, 09.00);//Front
-    tableFaces[4].addVertex( 10.0,-10.0, 10.00);
-    tableFaces[4].addVertex( 10.0, 10.0, 10.00);
     tableFaces[4].addVertex( 10.0, 10.0, 09.00);
+        tableFaces[4].addVertex( 10.0, 10.0, 10.00);
+
+        tableFaces[4].addVertex( 10.0,-10.0, 10.00);
+
+        tableFaces[4].addVertex( 10.0,-10.0, 09.00);//Front
+
 
     tableFaces[4].setTexture(GLOBAL.table);
     tableFaces[4].addTextureVertex(0.0, 0.0, 0.0);
@@ -108,10 +114,13 @@ void defineTableTop(Polygon * tableFaces){
     }
 
     {
-    tableFaces[5].addVertex(-10.0,-10.0, 10.00);//Top
-    tableFaces[5].addVertex(-10.0, 10.0, 10.00);
-    tableFaces[5].addVertex( 10.0, 10.0, 10.00);
     tableFaces[5].addVertex( 10.0,-10.0, 10.00);
+        tableFaces[5].addVertex( 10.0, 10.0, 10.00);
+
+        tableFaces[5].addVertex(-10.0, 10.0, 10.00);
+
+        tableFaces[5].addVertex(-10.0,-10.0, 10.00);//Top
+
 
     tableFaces[5].setTexture(GLOBAL.table);
     tableFaces[5].addTextureVertex(0.0, 0.0, 0.0);
@@ -162,10 +171,10 @@ void rotateTableLeg(double rotX, double rotY, double rotZ){//rotate by angle for
 void defineTableLeg(Polygon *faces){
   
     {
-    faces[0].addVertex(-01.0,-01.0, 00.0);//Left
-    faces[0].addVertex(-01.0,-01.0, 09.0);
-    faces[0].addVertex( 01.0,-01.0, 09.0);
     faces[0].addVertex( 01.0,-01.0, 00.0);
+    faces[0].addVertex( 01.0,-01.0, 09.0);
+    faces[0].addVertex(-01.0,-01.0, 09.0);
+    faces[0].addVertex(-01.0,-01.0, 00.0);//Left
 
     faces[0].setTexture(GLOBAL.table);
     faces[0].addTextureVertex(10.0, 00.0, 00.0);
@@ -201,10 +210,10 @@ void defineTableLeg(Polygon *faces){
     }
 
     {
-    faces[3].addVertex( 01.0,-01.0, 00.0);//Front
-    faces[3].addVertex( 01.0,-01.0, 09.0);
-    faces[3].addVertex( 01.0, 01.0, 09.0);
     faces[3].addVertex( 01.0, 01.0, 00.0);
+    faces[3].addVertex( 01.0, 01.0, 09.0);
+    faces[3].addVertex( 01.0,-01.0, 09.0);
+    faces[3].addVertex( 01.0,-01.0, 00.0);//Front
 
     faces[3].setTexture(GLOBAL.table);
     faces[3].addTextureVertex(10.0, 00.0, 0.0);

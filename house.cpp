@@ -54,10 +54,10 @@ void rotateHouse(double rotX, double rotY, double rotZ, bool b){//rotate by angl
 
 void defineHouse( Polygon *faces ){
     {
-    faces[0].addVertex(-100.0,-100.0, 000.0);//Bottom //bottom left
-    faces[0].addVertex(-100.0, 100.0, 000.0);         //top left  
-    faces[0].addVertex( 100.0, 100.0, 000.0);
     faces[0].addVertex( 100.0,-100.0, 000.0);
+    faces[0].addVertex( 100.0, 100.0, 000.0);
+    faces[0].addVertex(-100.0, 100.0, 000.0);         //top left  
+    faces[0].addVertex(-100.0,-100.0, 000.0);//Bottom //bottom left
 
     faces[0].setTexture(GLOBAL.floor);
     faces[0].addTextureVertex(0.0, 0.0, 0.0);
@@ -80,10 +80,10 @@ void defineHouse( Polygon *faces ){
     }
 
     {
-    faces[2].addVertex(-100.0, 100.0, 000.0);//Right
-    faces[2].addVertex(-100.0, 100.0, 100.0);
-    faces[2].addVertex( 100.0, 100.0, 100.0);
     faces[2].addVertex( 100.0, 100.0, 000.0);
+    faces[2].addVertex( 100.0, 100.0, 100.0);
+    faces[2].addVertex(-100.0, 100.0, 100.0);
+    faces[2].addVertex(-100.0, 100.0, 000.0);//Right
 
     faces[2].setTexture(GLOBAL.walls);
     faces[2].addTextureVertex(0.0, 0.0, 0.0);
@@ -93,10 +93,10 @@ void defineHouse( Polygon *faces ){
     }	
 
     {
-    faces[3].addVertex(-100.0,-100.0, 000.0);//Back
-    faces[3].addVertex(-100.0,-100.0, 100.0);
-    faces[3].addVertex(-100.0, 100.0, 100.0);
     faces[3].addVertex(-100.0, 100.0, 000.0);
+    faces[3].addVertex(-100.0, 100.0, 100.0);
+    faces[3].addVertex(-100.0,-100.0, 100.0);
+    faces[3].addVertex(-100.0,-100.0, 000.0);//Back
 
     faces[3].setTexture(GLOBAL.walls);
     faces[3].addTextureVertex(0.0, 0.0, 0.0);

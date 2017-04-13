@@ -85,7 +85,7 @@ void loadTextures(texture2D &texture){//we will read raw image files (the 2d arr
 	   // printf("%d\n",texture.texID);
 
 	 unsigned char *data;
-     FILE *file;
+     // FILE *file;
           // printf("\nloadTextures");
 
      // open texture data

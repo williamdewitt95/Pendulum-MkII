@@ -627,6 +627,7 @@ int main(int argc, char** argv){
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_NORMALIZE);
+    glEnable(GL_CULL_FACE);
 
     // Turn on or off axes //
     axis = glutCreateMenu(onAxis);
