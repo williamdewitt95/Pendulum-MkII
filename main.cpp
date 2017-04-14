@@ -399,6 +399,14 @@ void display(void){
 
     drawFilledPendulum(pendStick, 12, theta*180.0/M_PI);
 
+    GLfloat light_0_position[4] =   { -.01, 1.0, 0.0, 0.0 };
+
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(light_0_position[0],light_0_position[1],light_0_position[2]); 
+    glutSolidSphere(1.5,20,20);
+    glPopMatrix();
+
     showFPS();
 
     // glFlush();

@@ -67,10 +67,10 @@ void defineHouse( Polygon *faces ){
     }
 
     {
-    faces[1].addVertex(-100.0,-100.0, 000.0);//Left
-    faces[1].addVertex(-100.0,-100.0, 100.0);
-    faces[1].addVertex( 100.0,-100.0, 100.0);
     faces[1].addVertex( 100.0,-100.0, 000.0);
+    faces[1].addVertex( 100.0,-100.0, 100.0);
+    faces[1].addVertex(-100.0,-100.0, 100.0);
+    faces[1].addVertex(-100.0,-100.0, 000.0);//Left
 
     faces[1].setTexture(GLOBAL.walls);
     faces[1].addTextureVertex(0.0, 0.0, 0.0);
@@ -80,10 +80,10 @@ void defineHouse( Polygon *faces ){
     }
 
     {
-    faces[2].addVertex( 100.0, 100.0, 000.0);
-    faces[2].addVertex( 100.0, 100.0, 100.0);
-    faces[2].addVertex(-100.0, 100.0, 100.0);
     faces[2].addVertex(-100.0, 100.0, 000.0);//Right
+    faces[2].addVertex(-100.0, 100.0, 100.0);
+    faces[2].addVertex( 100.0, 100.0, 100.0);
+    faces[2].addVertex( 100.0, 100.0, 000.0);
 
     faces[2].setTexture(GLOBAL.walls);
     faces[2].addTextureVertex(0.0, 0.0, 0.0);

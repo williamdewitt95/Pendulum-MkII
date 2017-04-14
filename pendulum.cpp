@@ -15,15 +15,15 @@ void drawFilledPendulumHolder(Polygon faces[], int numFaces){//Draw the house (w
 void definePendulumHolder(Polygon * faces){
     
     {
-    
+        faces[0].addVertex(-1.0,-1.0, 10.00);//Left
+    faces[0].addVertex(-1.0,-1.0, 15.00);
+
     
     // faces[0].addVertex( 5.5,-1.0, 15.00);
     // faces[0].addVertex( 5.5,-1.0, 14.00);
-    
+        faces[0].addVertex( 1.0,-1.0, 14.00);
+
     faces[0].addVertex( 1.0,-1.0, 10.00);
-    faces[0].addVertex( 1.0,-1.0, 14.00);
-    faces[0].addVertex(-1.0,-1.0, 15.00);
-    faces[0].addVertex(-1.0,-1.0, 10.00);//Left
 
     faces[0].setTexture(GLOBAL.pendulumHolder);
     faces[0].addTextureVertex(01.0, 01.0, 00.0);
@@ -36,10 +36,10 @@ void definePendulumHolder(Polygon * faces){
     }
 
     {
-    faces[1].addVertex( 1.0,-1.0, 14.00);
-    faces[1].addVertex( 5.5,-1.0, 14.00);
-    faces[1].addVertex( 5.5,-1.0, 15.00);
     faces[1].addVertex(-1.0,-1.0, 15.00);    //Left2
+    faces[1].addVertex( 5.5,-1.0, 15.00);
+    faces[1].addVertex( 5.5,-1.0, 14.00);
+    faces[1].addVertex( 1.0,-1.0, 14.00);
     
     faces[1].setTexture(GLOBAL.pendulumHolder);
     faces[1].addTextureVertex(01.0, 00.0, 00.0);
@@ -49,16 +49,14 @@ void definePendulumHolder(Polygon * faces){
     }
 
     {
-    faces[2].addVertex(-1.0, 1.0, 10.00);//Right
-    faces[2].addVertex(-1.0, 1.0, 15.00);       
-    faces[2].addVertex( 1.0, 1.0, 14.00);	
     faces[2].addVertex( 1.0, 1.0, 10.00);
-
-    
+    faces[2].addVertex( 1.0, 1.0, 14.00);   
+   
     // faces[1].addVertex( 5.5, 1.0, 15.00);
     // faces[1].addVertex( 5.5, 1.0, 14.00);
-    
-   
+    faces[2].addVertex(-1.0, 1.0, 15.00);       
+    faces[2].addVertex(-1.0, 1.0, 10.00);//Right
+
 
     faces[2].setTexture(GLOBAL.pendulumHolder);
     faces[2].addTextureVertex(01.0, 00.0, 00.0);
@@ -68,11 +66,11 @@ void definePendulumHolder(Polygon * faces){
     }  
     
     {
-    faces[3].addVertex(-1.0, 1.0, 15.00);//Right2
-    faces[3].addVertex( 5.5, 1.0, 15.00);
-    faces[3].addVertex( 5.5, 1.0, 14.00);
     faces[3].addVertex( 1.0, 1.0, 14.00);
-    
+    faces[3].addVertex( 5.5, 1.0, 14.00);
+    faces[3].addVertex( 5.5, 1.0, 15.00);
+    faces[3].addVertex(-1.0, 1.0, 15.00);//Right2
+
     
 
     faces[3].setTexture(GLOBAL.pendulumHolder);
@@ -172,10 +170,10 @@ void definePendulumStick( Polygon *faces ){
     }
 
     {
-    faces[1].addVertex( pendWidth, -pendWidth, -pendLength);
-    faces[1].addVertex( pendWidth, -pendWidth, + 0.0      );
-    faces[1].addVertex(-pendWidth, -pendWidth, + 0.0      );
     faces[1].addVertex(-pendWidth, -pendWidth, -pendLength);//Left
+    faces[1].addVertex(-pendWidth, -pendWidth, + 0.0      );
+    faces[1].addVertex( pendWidth, -pendWidth, + 0.0      );
+    faces[1].addVertex( pendWidth, -pendWidth, -pendLength);
 
     faces[1].setTexture(GLOBAL.pendulumStick);
     faces[1].addTextureVertex(01.0, 00.0, 00.0);
@@ -185,10 +183,11 @@ void definePendulumStick( Polygon *faces ){
     }
 
     {   
-    faces[2].addVertex(-pendWidth,  pendWidth, -pendLength);//Right
-    faces[2].addVertex(-pendWidth,  pendWidth, + 0.0      );
+    faces[2].addVertex( pendWidth,  pendWidth, -pendLength); 
     faces[2].addVertex( pendWidth,  pendWidth, + 0.0      );
-    faces[2].addVertex( pendWidth,  pendWidth, -pendLength);   
+    faces[2].addVertex(-pendWidth,  pendWidth, + 0.0      );
+    faces[2].addVertex(-pendWidth,  pendWidth, -pendLength);//Right
+  
 
     faces[2].setTexture(GLOBAL.pendulumStick);
     faces[2].addTextureVertex(01.0, 00.0, 00.0);
@@ -253,10 +252,10 @@ void definePendulumStick( Polygon *faces ){
     }
 
     {
-    faces[7].addVertex( pendWidth, -pendWidth, -pendLength-ballLength);
-    faces[7].addVertex( pendWidth, -pendWidth, -pendLength+ 0.0       );
-    faces[7].addVertex(-pendWidth, -pendWidth, -pendLength+ 0.0       );
     faces[7].addVertex(-pendWidth, -pendWidth, -pendLength-ballLength);//Left
+    faces[7].addVertex(-pendWidth, -pendWidth, -pendLength+ 0.0       );
+    faces[7].addVertex( pendWidth, -pendWidth, -pendLength+ 0.0       );
+    faces[7].addVertex( pendWidth, -pendWidth, -pendLength-ballLength);
 
     faces[7].setTexture(GLOBAL.pendulumBall);
     faces[7].addTextureVertex(01.0, 00.0, 00.0);
@@ -266,10 +265,10 @@ void definePendulumStick( Polygon *faces ){
     }
 
     {
-    faces[8].addVertex(-pendWidth,  pendWidth, -pendLength-ballLength);//Right
-    faces[8].addVertex(-pendWidth,  pendWidth, -pendLength+ 0.0       );
-    faces[8].addVertex( pendWidth,  pendWidth, -pendLength+ 0.0       );
     faces[8].addVertex( pendWidth,  pendWidth, -pendLength-ballLength);   
+    faces[8].addVertex( pendWidth,  pendWidth, -pendLength+ 0.0       );
+    faces[8].addVertex(-pendWidth,  pendWidth, -pendLength+ 0.0       );
+    faces[8].addVertex(-pendWidth,  pendWidth, -pendLength-ballLength);//Right
 
     faces[8].setTexture(GLOBAL.pendulumBall);
     faces[8].addTextureVertex(01.0, 00.0, 00.0);

@@ -56,13 +56,10 @@ void defineTableTop(Polygon * tableFaces){
     }
 
     {
+    tableFaces[1].addVertex(-10.0,-10.0, 09.00);//Left
+    tableFaces[1].addVertex(-10.0,-10.0, 10.00);
+    tableFaces[1].addVertex( 10.0,-10.0, 10.00);
     tableFaces[1].addVertex( 10.0,-10.0, 09.00);
-        tableFaces[1].addVertex( 10.0,-10.0, 10.00);
-
-        tableFaces[1].addVertex(-10.0,-10.0, 10.00);
-
-        tableFaces[1].addVertex(-10.0,-10.0, 09.00);//Left
-
 
     tableFaces[1].setTexture(GLOBAL.table);
     tableFaces[1].addTextureVertex(0.0, 0.0, 0.0);
@@ -72,10 +69,10 @@ void defineTableTop(Polygon * tableFaces){
     }
 
     {
-    tableFaces[2].addVertex(-10.0, 10.0, 09.00);//Right
-    tableFaces[2].addVertex(-10.0, 10.0, 10.00);
-    tableFaces[2].addVertex( 10.0, 10.0, 10.00);
     tableFaces[2].addVertex( 10.0, 10.0, 09.00);
+    tableFaces[2].addVertex( 10.0, 10.0, 10.00);
+    tableFaces[2].addVertex(-10.0, 10.0, 10.00);
+    tableFaces[2].addVertex(-10.0, 10.0, 09.00);//Right
     
     tableFaces[2].setTexture(GLOBAL.table);
     tableFaces[2].addTextureVertex(0.0, 0.0, 0.0);
@@ -171,10 +168,10 @@ void rotateTableLeg(double rotX, double rotY, double rotZ){//rotate by angle for
 void defineTableLeg(Polygon *faces){
   
     {
-    faces[0].addVertex( 01.0,-01.0, 00.0);
-    faces[0].addVertex( 01.0,-01.0, 09.0);
-    faces[0].addVertex(-01.0,-01.0, 09.0);
     faces[0].addVertex(-01.0,-01.0, 00.0);//Left
+    faces[0].addVertex(-01.0,-01.0, 09.0);
+    faces[0].addVertex( 01.0,-01.0, 09.0);
+    faces[0].addVertex( 01.0,-01.0, 00.0);
 
     faces[0].setTexture(GLOBAL.table);
     faces[0].addTextureVertex(10.0, 00.0, 00.0);
@@ -184,10 +181,11 @@ void defineTableLeg(Polygon *faces){
     }
 
     {
-    faces[1].addVertex(-01.0, 01.0, 00.0);//Right
-    faces[1].addVertex(-01.0, 01.0, 09.0);
+    faces[1].addVertex( 01.0, 01.0, 00.0); 
     faces[1].addVertex( 01.0, 01.0, 09.0);
-    faces[1].addVertex( 01.0, 01.0, 00.0);  
+    faces[1].addVertex(-01.0, 01.0, 09.0);
+    faces[1].addVertex(-01.0, 01.0, 00.0);//Right
+
 
     faces[1].setTexture(GLOBAL.table);
     faces[1].addTextureVertex(10.0, 00.0, 0.0);

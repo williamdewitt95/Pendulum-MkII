@@ -64,6 +64,8 @@ void Polygon::drawPolygon(){
 	Vertex normal;
 	normal = this->getNormal();
 
+	glNormal3d(normal.getX(), normal.getY(), normal.getZ());
+
     GLUtesselator * tess = gluNewTess();
     if(!tess) return;//tesselator failed somehow
 
@@ -81,7 +83,6 @@ void Polygon::drawPolygon(){
 
 	do{
 		gluTessVertex(tess, (double *)tempVertex->coords, (void*)count);
-		glNormal3d(normal.getX(), normal.getY(), normal.getZ());
         // printf("\n(%f, %f, %f)",normal.getX(), normal.getY(), normal.getZ());
 		count++;
 
@@ -90,6 +91,7 @@ void Polygon::drawPolygon(){
 
 	gluTessVertex(tess, (double *)tempVertex->coords, (void*)count);//do last one
   
+
     gluTessEndContour(tess);
     gluTessEndPolygon(tess);
 
