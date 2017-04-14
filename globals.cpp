@@ -167,9 +167,9 @@ void initLight(){
     glPushMatrix();
     glLoadIdentity();
 
- 	GLfloat material_ambient[4] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat diffuseMaterial[4] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_specular[4] = { 1.0, 1.0, 1.0, 1.0 };
+ 	GLfloat material_ambient[4] = { 0.4, 0.4, 0.4, 1.0 };
+	GLfloat diffuseMaterial[4] = { 0.5, 0.5, 0.5, 1.0 };
+    GLfloat mat_specular[4] = { 0.7, 0.7, 0.7, 1.0 };
 
 	glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseMaterial);
@@ -179,11 +179,10 @@ void initLight(){
 
 
 
-
-    GLfloat light_0_position[4] = 	{ -.01, 1.0, 0.0, 1.0 };
-    GLfloat light_0_ambient[4] =	{ 0.0, 0.0, 0.0, 1.0 };
-    GLfloat light_0_diffuse[4] = 	{ 0.0, 1.0, 0.0, 1.0 };
-    GLfloat light_0_specular[4] =	{ 1.0, 0.0, 0.0, 1.0 };
+    GLfloat light_0_position[4] = 	{ 0.0, 1.0, 0.0, 1.0 };
+    GLfloat light_0_ambient[4] =	{ 0.1, 0.1, 0.1, 1.0 };
+    GLfloat light_0_diffuse[4] = 	{ 0.0, 0.01, 0.0, 1.0 };
+    GLfloat light_0_specular[4] =	{ 0.05, 0.0, 0.0, 1.0 };
 
 	glLightfv(GL_LIGHT0, GL_POSITION, light_0_position);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_0_ambient);
@@ -195,33 +194,33 @@ void initLight(){
 
 
 
-    GLfloat light_1_position[4] = 	{-1.0, 0.0, 1.0, 0.0 };
-    GLfloat light_1_ambient[4] =	{ 0.0, 0.0, 1.0, 1.0 };
-    GLfloat light_1_diffuse[4] = 	{ 1.0, 0.0, 0.0, 1.0 };
-    GLfloat light_1_specular[4] =	{ 1.0, 0.0, 0.0, 1.0 };
+    GLfloat light_1_position[4] = 	{ 0.0, 0.0, 1.0, 1.0 };
+    GLfloat light_1_ambient[4] =	{ 0.0, 0.0, 0.0, 1.0 };
+    GLfloat light_1_diffuse[4] = 	{ 0.0, 0.1, 0.0, 1.0 };
+    GLfloat light_1_specular[4] =	{ 0.1, 0.0, 0.1, 1.0 };
 
 	glLightfv(GL_LIGHT1, GL_POSITION, light_1_position);
-	// glLightfv(GL_LIGHT1, GL_AMBIENT, light_1_ambient);
+	glLightfv(GL_LIGHT1, GL_AMBIENT, light_1_ambient);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, light_1_diffuse);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, light_1_specular);
 
-    // glEnable(GL_LIGHT1);
+    glEnable(GL_LIGHT1);
 
 
 
 
 
-	GLfloat light_2_position[4] =  {  0.0,  0.0, 25.0, 1.0 };
-	GLfloat light_2_ambient[4]  =  {  1.0,  1.0,  1.0, 1.0 };
-	GLfloat light_2_diffuse[4]  =  {  0.1,  0.1,  0.1, 1.0 };
+	GLfloat light_2_position[4] =  {  10.0,  1.0,  11.0, 1.0 };
+	GLfloat light_2_ambient[4]  =  {  0.0,  0.0,  0.0, 1.0 };
+	GLfloat light_2_diffuse[4]  =  {  1.0,  1.0,  1.0, 1.0 };
 	GLfloat light_2_specular[4] =  {  1.0,  1.0,  1.0, 1.0 };
-	GLfloat light_2_spot_direction[3] = { 0.0, 0.0,-1.0 };
+	GLfloat light_2_spot_direction[3] = {-1.0, -0.01, -0.1 };
 	GLfloat light_2_spot_cutoff = 30.0;
 	GLfloat light_2_spot_exponent = 2;//64
-	GLfloat light_2_gl_linear_attenuation = .3;
+	GLfloat light_2_gl_linear_attenuation = 0.3;
 
 	glLightfv(GL_LIGHT2, GL_POSITION, light_2_position);
-	// glLightfv(GL_LIGHT2, GL_AMBIENT, light_2_ambient);
+	glLightfv(GL_LIGHT2, GL_AMBIENT, light_2_ambient);
 	glLightfv(GL_LIGHT2, GL_DIFFUSE, light_2_diffuse);
 	glLightfv(GL_LIGHT2, GL_SPECULAR, light_2_specular);
 	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, light_2_spot_direction);
@@ -230,8 +229,55 @@ void initLight(){
 	glLightfv(GL_LIGHT2, GL_LINEAR_ATTENUATION, &light_2_gl_linear_attenuation);
  
 
-	// glEnable(GL_LIGHT2);
+	glEnable(GL_LIGHT2);
 
+	
+
+
+	GLfloat light_3_position[4] =  {  18.0,  5.0,  25.0, 1.0 };
+	GLfloat light_3_ambient[4]  =  {  0.0,  0.0,  0.0, 1.0 };
+	GLfloat light_3_diffuse[4]  =  {  0.0,  1.0,  0.0, 1.0 };
+	GLfloat light_3_specular[4] =  {  0.0,  1.0,  0.0, 1.0 };
+	GLfloat light_3_spot_direction[3] = {-1.0, -0.1, -1.0 };
+	GLfloat light_3_spot_cutoff = 60.0;
+	GLfloat light_3_spot_exponent = 8;//64
+	GLfloat light_3_gl_linear_attenuation = 0.3;
+
+	glLightfv(GL_LIGHT3, GL_POSITION, light_3_position);
+	glLightfv(GL_LIGHT3, GL_AMBIENT, light_3_ambient);
+	glLightfv(GL_LIGHT3, GL_DIFFUSE, light_3_diffuse);
+	glLightfv(GL_LIGHT3, GL_SPECULAR, light_3_specular);
+	glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, light_3_spot_direction);
+	glLightfv(GL_LIGHT3, GL_SPOT_CUTOFF, &light_3_spot_cutoff);
+	glLightfv(GL_LIGHT3, GL_SPOT_EXPONENT, &light_3_spot_exponent);
+	glLightfv(GL_LIGHT3, GL_LINEAR_ATTENUATION, &light_3_gl_linear_attenuation);
+ 
+
+	glEnable(GL_LIGHT3);
+
+
+
+
+	GLfloat light_4_position[4] =  {  18.0,  -5.0,  25.0, 1.0 };
+	GLfloat light_4_ambient[4]  =  {  0.0,  0.0,  0.0, 1.0 };
+	GLfloat light_4_diffuse[4]  =  {  0.0,  0.0,  1.0, 1.0 };
+	GLfloat light_4_specular[4] =  {  0.0,  0.0,  1.0, 1.0 };
+	GLfloat light_4_spot_direction[3] = {-1.0, 0.1, -1.0 };
+	GLfloat light_4_spot_cutoff = 60.0;
+	GLfloat light_4_spot_exponent = 8;//64
+	GLfloat light_4_gl_linear_attenuation = 0.3;
+
+	glLightfv(GL_LIGHT4, GL_POSITION, light_4_position);
+	glLightfv(GL_LIGHT4, GL_AMBIENT, light_4_ambient);
+	glLightfv(GL_LIGHT4, GL_DIFFUSE, light_4_diffuse);
+	glLightfv(GL_LIGHT4, GL_SPECULAR, light_4_specular);
+	glLightfv(GL_LIGHT4, GL_SPOT_DIRECTION, light_4_spot_direction);
+	glLightfv(GL_LIGHT4, GL_SPOT_CUTOFF, &light_4_spot_cutoff);
+	glLightfv(GL_LIGHT4, GL_SPOT_EXPONENT, &light_4_spot_exponent);
+	glLightfv(GL_LIGHT4, GL_LINEAR_ATTENUATION, &light_4_gl_linear_attenuation);
+ 
+
+	glEnable(GL_LIGHT4);
 
 
 

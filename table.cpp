@@ -112,12 +112,9 @@ void defineTableTop(Polygon * tableFaces){
 
     {
     tableFaces[5].addVertex( 10.0,-10.0, 10.00);
-        tableFaces[5].addVertex( 10.0, 10.0, 10.00);
-
-        tableFaces[5].addVertex(-10.0, 10.0, 10.00);
-
-        tableFaces[5].addVertex(-10.0,-10.0, 10.00);//Top
-
+    tableFaces[5].addVertex( 10.0, 10.0, 10.00);
+    tableFaces[5].addVertex(-10.0, 10.0, 10.00);
+    tableFaces[5].addVertex(-10.0,-10.0, 10.00);//Top
 
     tableFaces[5].setTexture(GLOBAL.table);
     tableFaces[5].addTextureVertex(0.0, 0.0, 0.0);
