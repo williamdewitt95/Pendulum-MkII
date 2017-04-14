@@ -17,6 +17,7 @@ double det2x2_4d (double a, double b, double c, double d);
 double * crossProd(double a[], double b[]);
 
 double crossProdZ(double a[], double b[]);
+void crossProd4by1(double a[4][1], double b[4][1], double result[4][1]);
 double crossProdZ_4d(double ax, double ay, double bx, double by);
 
 

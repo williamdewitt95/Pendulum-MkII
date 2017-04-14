@@ -39,6 +39,13 @@ result[1] = a[0]*b[2] - b[0]*a[2];
 result[2] = a[0]*b[1] - b[0]*a[1];
 return result;
 }
+void crossProd4by1(double a[4][1], double b[4][1], double result[4][1]){
+
+result[0][0] = a[1][0]*b[2][0] - b[1][0]*a[2][0];
+result[1][0] = a[0][0]*b[2][0] - b[0][0]*a[2][0];
+result[2][0] = a[0][0]*b[1][0] - b[0][0]*a[1][0];
+// return result;
+}
 double crossProdZ(double a[], double b[]){
 return a[0]*b[1] - b[0]*a[1];
 }

@@ -362,14 +362,17 @@ void drawFilledPendulumBall(Polygon faces[], int numFaces){//Draw the house (wit
         glBegin(GL_POLYGON);
        
         Vertex * temp = faces[j].firstVertex;
+        
         while(temp->next != faces[j].firstVertex){//go through vertices and add them - not a for loop because house could have pentagons on two sides
-            glVertex3i(temp->getX(),
+            glVertex3d(temp->getX(),
                        temp->getY(),
                        temp->getZ());
+            
+            
             temp = temp->next;
         }
 
-        glVertex3i(temp->getX(),//add last vertex
+        glVertex3d(temp->getX(),//add last vertex
                    temp->getY(),
                    temp->getZ());
 

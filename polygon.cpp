@@ -61,6 +61,8 @@ void Polygon::drawPolygon(){
 
     }
 
+	Vertex normal;
+	normal = this->getNormal();
 
     GLUtesselator * tess = gluNewTess();
     if(!tess) return;//tesselator failed somehow
@@ -79,7 +81,10 @@ void Polygon::drawPolygon(){
 
 	do{
 		gluTessVertex(tess, (double *)tempVertex->coords, (void*)count);
+		glNormal3d(normal.getX(), normal.getY(), normal.getZ());
+        // printf("\n(%f, %f, %f)",normal.getX(), normal.getY(), normal.getZ());
 		count++;
+
 		tempVertex = tempVertex->next;
 	}while(tempVertex->next != this->firstVertex);
 
@@ -157,8 +162,22 @@ void Polygon::setTexture(texture2D &newTex){
 int Polygon::getNumPoints(){
 	return this->numPoints;
 }
+Vertex Polygon::getNormal(){//returns a vertex that is the end of a vector between zero and vertex that is direction of normal
+	double temp1[4][1];
+	temp1[0][0] = this->firstVertex->next->getX() - this->firstVertex->getX();
+	temp1[1][0] = this->firstVertex->next->getY() - this->firstVertex->getY();
+	temp1[2][0] = this->firstVertex->next->getZ() - this->firstVertex->getZ();
+	double temp2[4][1];
+	temp2[0][0] = this->firstVertex->next->next->getX() - this->firstVertex->next->getX();
+	temp2[1][0] = this->firstVertex->next->next->getY() - this->firstVertex->next->getY();
+	temp2[2][0] = this->firstVertex->next->next->getZ() - this->firstVertex->next->getZ();
+	Vertex normal;
+	crossProd4by1(temp1, temp2, normal.coords);
 
-
+	
+	
+	return normal;
+}
 void Polygon::translatePolygon(double x, double y){
 		 // printf("\ntranslateArrow(), x,y: %f,%f\n",x,y);
 

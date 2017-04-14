@@ -5,6 +5,7 @@
 
 #include "vertex.h"
 #include "matrixWork.h"
+#include "myUtils.h"
 #include <GL/glut.h>
 
 
@@ -21,6 +22,7 @@ public:
 	bool texture2DExists;
 	int numPoints;
 	texture2D texture;
+	Vertex getNormal();
 	void translatePolygon(double x, double y);
 	void rotatePolygon(double rotSpeed);
 	void rotatePolygon(double rotSpeedX, double rotSpeedY, double rotSpeedZ);

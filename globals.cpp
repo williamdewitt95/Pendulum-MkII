@@ -156,3 +156,81 @@ void loadTextures(texture2D &texture){//we will read raw image files (the 2d arr
 
 }
 
+
+void initLight(){
+
+    glEnable(GL_LIGHTING);
+
+
+ 	GLfloat material_ambient[4] = { 0.5, 0.5, 0.5, 1.0 };
+	GLfloat diffuseMaterial[4] = { 0.5, 0.5, 0.5, 1.0 };
+    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_position2[] = { -1.0, 1.0, 01.0, 0.0 };
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuseMaterial);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    // glMaterialf(GL_FRONT, GL_SHININESS, 25.0);
+
+
+
+
+
+    GLfloat light_0_position[4] = 	{ 1.0, 1.0, 0.0, 0.0 };
+    GLfloat light_0_ambient[4] =	{ 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_0_diffuse[4] = 	{ 1.0, 0.0, 0.0, 1.0 };
+    GLfloat light_0_specular[4] =	{ 1.0, 0.0, 0.0, 1.0 };
+
+	glLightfv(GL_LIGHT0, GL_POSITION, light_0_position);
+	// glLightfv(GL_LIGHT0, GL_AMBIENT, light_0_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_0_diffuse);
+	// glLightfv(GL_LIGHT0, GL_SPECULAR, light_0_specular);
+
+    glEnable(GL_LIGHT0);
+
+
+
+
+    GLfloat light_1_position[4] = 	{-1.0, 1.0, 1.0, 0.0 };
+    GLfloat light_1_ambient[4] =	{ 0.0, 0.0, 1.0, 1.0 };
+    GLfloat light_1_diffuse[4] = 	{ 1.0, 0.0, 0.0, 1.0 };
+    GLfloat light_1_specular[4] =	{ 1.0, 0.0, 0.0, 1.0 };
+
+	glLightfv(GL_LIGHT1, GL_POSITION, light_1_position);
+	// glLightfv(GL_LIGHT1, GL_AMBIENT, light_1_ambient);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, light_1_diffuse);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, light_1_specular);
+
+    // glEnable(GL_LIGHT1);
+
+
+
+
+
+	GLfloat light_2_position[4] =  {  5.0,  3.0,  5.0, 1.0 };
+	GLfloat light_2_ambient[4]  =  {  1.0,  1.0,  1.0, 1.0 };
+	GLfloat light_2_diffuse[4]  =  {  1.0,  1.0,  1.0, 1.0 };
+	GLfloat light_2_specular[4] =  {  1.0,  1.0,  1.0, 1.0 };
+	GLfloat light_2_spot_direction[3] = { 0.0, 1.0, 0.0 };
+	GLfloat light_2_spot_cutoff = 10.0;
+	GLfloat light_2_spot_exponent = 64;
+	GLfloat light_2_gl_linear_attenuation = .3;
+
+	glLightfv(GL_LIGHT2, GL_POSITION, light_2_position);
+	// glLightfv(GL_LIGHT2, GL_AMBIENT, light_2_ambient);
+	glLightfv(GL_LIGHT2, GL_DIFFUSE, light_2_diffuse);
+	glLightfv(GL_LIGHT2, GL_SPECULAR, light_2_specular);
+	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, light_2_spot_direction);
+	glLightfv(GL_LIGHT2, GL_SPOT_CUTOFF, &light_2_spot_cutoff);
+	glLightfv(GL_LIGHT2, GL_SPOT_EXPONENT, &light_2_spot_exponent);
+	glLightfv(GL_LIGHT2, GL_LINEAR_ATTENUATION, &light_2_gl_linear_attenuation);
+ 
+
+	// glEnable(GL_LIGHT2);
+
+
+
+
+    // glColorMaterial(GL_FRONT, GL_DIFFUSE);
+    // glEnable(GL_COLOR_MATERIAL);
+}

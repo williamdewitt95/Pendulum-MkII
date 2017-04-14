@@ -33,7 +33,7 @@ double initialRot=0;
 int rotSpeed = 10;
 double theta=initialRot*M_PI/180;
 double omega=0;
-static double penLength = .9938;  // Length of pendulum
+static double penLength = .09938;  // Length of pendulum
 static double grav = 9.80665;  // Normalized gravitational constant
 static double b_FrictionConstant = 0.00;  // Frictional damping constant
 static double mass = 1.00;  // Mass in normalized gravitational units
@@ -482,7 +482,16 @@ void keyboard( unsigned char key, int x, int y )
         camMove_vert += camMove_speed;
     }else if(key == ' '){
         camMove_vert -= camMove_speed;
+    }else if(key == 'l' || key == 'L'){
+        glEnable(GL_LIGHT1);
+    }else if(key == 'o' || key == 'O'){
+        glDisable(GL_LIGHT1);
+    }else if(key == 'k' || key == 'K'){
+        glEnable(GL_LIGHT0);
+    }else if(key == 'i' || key == 'I'){
+        glDisable(GL_LIGHT0);
     }
+
 
   
 }
@@ -627,7 +636,11 @@ int main(int argc, char** argv){
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_NORMALIZE);
-    glEnable(GL_CULL_FACE);
+    // glEnable(GL_CULL_FACE);
+
+    //Lighting
+    initLight();
+    
 
     // Turn on or off axes //
     axis = glutCreateMenu(onAxis);

@@ -69,4 +69,5 @@ void windowResize(int width, int height);
 void scaleMouse(int &x, int &y);
 void cameraMovement(int x, int y);
 void loadTextures(texture2D &tex);
+void initLight();
 #endif
