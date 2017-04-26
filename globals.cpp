@@ -19,6 +19,9 @@ GLOBAL_SETTINGS::GLOBAL_SETTINGS(){
 GLOBAL_SETTINGS GLOBAL;
 
 
+
+
+
 void windowResize(int width, int height){
 
 	//move the world cordinates to match the change in the windows draw area

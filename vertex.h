@@ -26,7 +26,12 @@ public:
 	Vertex * next;							//the next vertex in the list
 	Vertex& operator=(const Vertex& other);//copy the vertex
 	double coords[4][1];	//4by1 array to hold the coordinates: x,y,z,w
-
+	double normal[4][1];
+	void setNormal(double x, double y, double z);
+	double getNormalX();
+	double getNormalY();
+	double getNormalZ();
+	void getNormal(double arr[4][1]);
 
 };
 

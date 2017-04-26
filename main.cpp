@@ -628,9 +628,12 @@ int main(int argc, char** argv){
     glutInitWindowSize (SCALABLE_WINDOW_MAX_X, SCALABLE_WINDOW_MAX_Y); 
     glutInitWindowPosition (100, 100);
     glutCreateWindow (argv[0]);
+
     init ();
     glutDisplayFunc(display); 
     glutReshapeFunc(windowResize);
+    glutCreateWindow ("Pendulum Phase Plot");
+
 
     glewInit();
 
