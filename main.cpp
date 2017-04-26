@@ -28,11 +28,15 @@ double ti=0.0;
 // std::chrono::steady_clock::time_point startTime = steady_clock::now();
 double simTime = 0;
 bool stopped=false;
+double periodLast =0.0;
+double period=0.0;
 
 double initialRot=0;
 int rotSpeed = 10;
 double theta=initialRot*M_PI/180;
 double omega=0;
+double prevOmega=omega;
+
 static double penLength = .09938;  // Length of pendulum
 static double grav = 9.80665;  // Normalized gravitational constant
 static double b_FrictionConstant = 0.00;  // Frictional damping constant
@@ -313,6 +317,7 @@ float actualfps, fps = 0.0;
 
 void showFPS()
 {
+
     currentTime = glutGet(GLUT_ELAPSED_TIME);
     char str_fps[15];
     if ( (currentTime - oldTime) > 1000 )     
@@ -352,11 +357,21 @@ void showFPS()
         glutStrokeCharacter(font, str_fps[i]);
     }
     glPopMatrix();
+
+    if(prevOmega > 0.0 && omega < 0.0 || omega ==0){
+        period = (currentTime - periodLast)/1000.0;
+        periodLast = currentTime;
+        // printf("!!!! %f\n",period);
+    }
+    
+    // printf("%f, %f\n",prevOmega,omega);
+    prevOmega = omega;
+
     glTranslatef(0.0,-5.0,0.0);
     glScalef(0.15, 0.15, 0.15);
     glRotatef(180.0, 1.0, 0.0, 0.0);
     glScalef(0.1,0.1,0.1);
-    sprintf(&str_fps[0], "Period = %.0f",omega);
+    sprintf(&str_fps[0], "Period = %.2f",period);
     len = (int) strlen(str_fps);
     for (int i = 0; i < len; i++) {
         glutStrokeCharacter(font, str_fps[i]);
@@ -623,12 +638,12 @@ int main(int argc, char** argv){
     // std::cin>>penLength;
     // printf("\nGravitational constant of pendulum: \n");
     // std::cin>>grav;
-    // printf("\nDamping constant of pendulum: \n");
-    // std::cin>>b_FrictionConstant;
-    // printf("\nAmplitude of external impulse: \n");
-    // std::cin>>amplitudeOfDrivingForce;
-    // printf("\nFrequency of external impulse: \n");
-    // std::cin>>freqOfDrivingForce;
+    printf("\nDamping constant of pendulum: \n");
+    std::cin>>b_FrictionConstant;
+    printf("\nAmplitude of external impulse: \n");
+    std::cin>>amplitudeOfDrivingForce;
+    printf("\nFrequency of external impulse: \n");
+    std::cin>>freqOfDrivingForce;
     printf("\n\n\nStarting....\n\n\n");
 
 
