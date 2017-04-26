@@ -96,12 +96,9 @@ void defineTableTop(Polygon * tableFaces){
 
     {
     tableFaces[4].addVertex( 10.0, 10.0, 09.00);
-        tableFaces[4].addVertex( 10.0, 10.0, 10.00);
-
-        tableFaces[4].addVertex( 10.0,-10.0, 10.00);
-
-        tableFaces[4].addVertex( 10.0,-10.0, 09.00);//Front
-
+    tableFaces[4].addVertex( 10.0, 10.0, 10.00);
+    tableFaces[4].addVertex( 10.0,-10.0, 10.00);
+    tableFaces[4].addVertex( 10.0,-10.0, 09.00);//Front
 
     tableFaces[4].setTexture(GLOBAL.table);
     tableFaces[4].addTextureVertex(0.0, 0.0, 0.0);
@@ -122,6 +119,7 @@ void defineTableTop(Polygon * tableFaces){
     tableFaces[5].addTextureVertex(10.0, 10.0, 0.0);
     tableFaces[5].addTextureVertex(10.0, 0.0, 0.0);
     }
+    // printf("end\n");
 
 }
 

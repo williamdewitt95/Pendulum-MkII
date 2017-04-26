@@ -167,7 +167,7 @@ void initLight(){
     glPushMatrix();
     glLoadIdentity();
 
- 	GLfloat material_ambient[4] = { 0.4, 0.4, 0.4, 1.0 };
+ 	GLfloat material_ambient[4] = { 0.01, 0.01, 0.01, 1.0 };
 	GLfloat diffuseMaterial[4] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat mat_specular[4] = { 0.7, 0.7, 0.7, 1.0 };
 
@@ -180,7 +180,7 @@ void initLight(){
 
 
     GLfloat light_0_position[4] = 	{ 0.0, 1.0, 0.0, 1.0 };
-    GLfloat light_0_ambient[4] =	{ 0.1, 0.1, 0.1, 1.0 };
+    GLfloat light_0_ambient[4] =	{ 0.01, 0.01, 0.01, 1.0 };
     GLfloat light_0_diffuse[4] = 	{ 0.0, 0.01, 0.0, 1.0 };
     GLfloat light_0_specular[4] =	{ 0.05, 0.0, 0.0, 1.0 };
 
@@ -240,7 +240,7 @@ void initLight(){
 	GLfloat light_3_specular[4] =  {  0.0,  1.0,  0.0, 1.0 };
 	GLfloat light_3_spot_direction[3] = {-1.0, -0.1, -1.0 };
 	GLfloat light_3_spot_cutoff = 60.0;
-	GLfloat light_3_spot_exponent = 8;//64
+	GLfloat light_3_spot_exponent = 2;//64
 	GLfloat light_3_gl_linear_attenuation = 0.3;
 
 	glLightfv(GL_LIGHT3, GL_POSITION, light_3_position);
@@ -264,7 +264,7 @@ void initLight(){
 	GLfloat light_4_specular[4] =  {  0.0,  0.0,  1.0, 1.0 };
 	GLfloat light_4_spot_direction[3] = {-1.0, 0.1, -1.0 };
 	GLfloat light_4_spot_cutoff = 60.0;
-	GLfloat light_4_spot_exponent = 8;//64
+	GLfloat light_4_spot_exponent = 2;//64
 	GLfloat light_4_gl_linear_attenuation = 0.3;
 
 	glLightfv(GL_LIGHT4, GL_POSITION, light_4_position);

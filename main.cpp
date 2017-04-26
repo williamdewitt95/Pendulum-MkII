@@ -342,11 +342,22 @@ void showFPS()
     glLoadIdentity();
 
     glTranslatef(85, 95, 0);
+    glPushMatrix();
     glScalef(0.15, 0.15, 0.15);
 
     glRotatef(180.0, 1.0, 0.0, 0.0);
     glScalef(0.1,0.1,0.1);
     int len = (int) strlen(str_fps);
+    for (int i = 0; i < len; i++) {
+        glutStrokeCharacter(font, str_fps[i]);
+    }
+    glPopMatrix();
+    glTranslatef(0.0,-5.0,0.0);
+    glScalef(0.15, 0.15, 0.15);
+    glRotatef(180.0, 1.0, 0.0, 0.0);
+    glScalef(0.1,0.1,0.1);
+    sprintf(&str_fps[0], "Period = %.0f",omega);
+    len = (int) strlen(str_fps);
     for (int i = 0; i < len; i++) {
         glutStrokeCharacter(font, str_fps[i]);
     }
@@ -368,7 +379,7 @@ void display(void){
     Polygon pendStick[12];
     // Polygon pendBall[6];
 
-
+    glEnable(GL_LIGHTING);
     look();//sets view
 
     glClear (GL_COLOR_BUFFER_BIT);
@@ -406,7 +417,7 @@ void display(void){
     // glTranslatef(light_0_position[0],light_0_position[1],light_0_position[2]); 
     // glutSolidSphere(1.5,20,20);
     // glPopMatrix();
-
+    glDisable(GL_LIGHTING);
     showFPS();
 
     // glFlush();
@@ -645,7 +656,6 @@ int main(int argc, char** argv){
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_NORMALIZE);
     // glEnable(GL_CULL_FACE);
-
     //Lighting
     initLight();
     
@@ -663,7 +673,6 @@ int main(int argc, char** argv){
 
 
     glutAttachMenu(GLUT_MIDDLE_BUTTON);
-
     glutMainLoop();
     return 0;
 }

@@ -4,8 +4,9 @@
 
 
 void drawFilledHouse(Polygon faces[6]){//Draw the house (with fill)
-	int j;
-	// glPolygonMode(GL_FRONT, GL_FILL);
+
+    int j;
+    // glPolygonMode(GL_FRONT, GL_FILL);
     // glPolygonMode(GL_BACK, GL_FILL);
     for(j=0;j<6;j++){//House always has 7 sides
 
@@ -20,10 +21,10 @@ void drawFilledHouse(Polygon faces[6]){//Draw the house (with fill)
         // Vertex * temp = faces[j].firstVertex;
         // while(temp->next != faces[j].firstVertex){//go through vertices and add them - not a for loop because house could have pentagons on two sides
             
-        // 	glVertex3i(temp->getX(),
-        // 			   temp->getY(),
-        // 			   temp->getZ());
-        // 	temp = temp->next;
+        //  glVertex3i(temp->getX(),
+        //             temp->getY(),
+        //             temp->getZ());
+        //  temp = temp->next;
         // }
 
         // glVertex3i(temp->getX(),//add last vertex 
@@ -40,6 +41,7 @@ void drawFilledHouse(Polygon faces[6]){//Draw the house (with fill)
 
 
     }
+    // printf("draw house\n");
 }
 
 
@@ -90,7 +92,7 @@ void defineHouse( Polygon *faces ){
     faces[2].addTextureVertex(0.0, 10.0, 0.0);
     faces[2].addTextureVertex(10.0, 10.0, 0.0);
     faces[2].addTextureVertex(10.0, 0.0, 0.0);
-    }	
+    }   
 
     {
     faces[3].addVertex(-100.0, 100.0, 000.0);
