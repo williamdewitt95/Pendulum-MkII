@@ -185,6 +185,12 @@ void init(void)
 
 }
 
+
+void initPhase(void){
+    glClearColor(0.0,0.0,0.0,0.0);
+
+}
+
 void idle(){
     GLOBAL.CAMERA_POS.z += camMove_vert;
     GLOBAL.CAMERA_POS.x += camMove_forward * cos(GLOBAL.CAMERA_ANGLE_HORIZONTAL*M_PI/180.0);
@@ -442,6 +448,16 @@ void display(void){
 }
 
 
+void displayPhasePlot(void){
+    glClear (GL_COLOR_BUFFER_BIT);
+    glColor3f (1.0, 1.0, 1.0);
+
+
+
+    glutPostRedisplay();
+
+}
+
 
 
 void onAxis(int msg)//View the axis or no
@@ -685,6 +701,10 @@ int main(int argc, char** argv){
     menu = glutCreateMenu(doNothing);
     glutAddSubMenu("Axes", axis);
   
+    glutInitWindowSize (100, 100);
+     glutInitWindowPosition (100, 100);
+    glutCreateWindow ("Pendulum Phase Plot");
+    glutDisplayFunc(displayPhasePlot); 
 
 
     glutAttachMenu(GLUT_MIDDLE_BUTTON);
