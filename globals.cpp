@@ -170,7 +170,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
     glPushMatrix();
     glLoadIdentity();
 
- 	GLfloat material_ambient[4] = { 0.01, 0.01, 0.01, 1.0 };
+ 	GLfloat material_ambient[4] = { 0.05, 0.05, 0.05, 1.0 };
 	GLfloat diffuseMaterial[4] = { 0.5, 0.5, 0.5, 1.0 };
     GLfloat mat_specular[4] = { 0.7, 0.7, 0.7, 1.0 };
 
@@ -285,7 +285,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 
 
 	GLfloat light_5_position[4] = 	{ 5.0, 1.0, 15.0, 1.0 };
-    GLfloat light_5_ambient[4] =	{ 0.7, 0.7, 0.7, 1.0 };
+    GLfloat light_5_ambient[4] =	{ 1.0, 1.0, 1.0, 1.0 };
     GLfloat light_5_diffuse[4] = 	{ 0.0, 0.00, 0.0, 1.0 };
     GLfloat light_5_specular[4] =	{ 0.0, 0.0, 0.0, 1.0 };
 

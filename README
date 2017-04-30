@@ -3,5 +3,5 @@ Real time simulation.
 A project that is an extension of the pendulum project on gitlab, but is a separate project.
 
 WASD to move camera
-1-5 to switch individual lights on and off
+1-6 to switch individual lights on and off
 0 to turn on/off lighting 
