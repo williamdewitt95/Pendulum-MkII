@@ -192,7 +192,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_0_specular);
 
     glEnable(GL_LIGHT0);
-
+    GLOBAL.lightsOn[0] = true;
 
 
 
@@ -207,7 +207,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 	glLightfv(GL_LIGHT1, GL_SPECULAR, light_1_specular);
 
     glEnable(GL_LIGHT1);
-
+    GLOBAL.lightsOn[1] = true;
 
 
 
@@ -232,7 +232,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
  
 
 	glEnable(GL_LIGHT2);
-
+	GLOBAL.lightsOn[2] = true;
 	
 
 
@@ -256,7 +256,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
  
 
 	glEnable(GL_LIGHT3);
-
+	GLOBAL.lightsOn[3] = true;
 
 
 
@@ -280,7 +280,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
  
 
 	glEnable(GL_LIGHT4);
-
+	GLOBAL.lightsOn[4] = true;
 
 
     // glColorMaterial(GL_FRONT, GL_DIFFUSE);

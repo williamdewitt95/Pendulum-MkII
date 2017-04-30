@@ -61,6 +61,8 @@ public:
 	texture2D floor;
 	texture2D ceiling;
 
+	bool lightsOn[5];
+
 };
 
 extern GLOBAL_SETTINGS GLOBAL;

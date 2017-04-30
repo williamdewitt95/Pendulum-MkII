@@ -553,15 +553,54 @@ void keyboard( unsigned char key, int x, int y )
         camMove_vert += camMove_speed;
     }else if(key == ' '){
         camMove_vert -= camMove_speed;
-    }else if(key == 'l' || key == 'L'){
-        glEnable(GL_LIGHT1);
-    }else if(key == 'o' || key == 'O'){
-        glDisable(GL_LIGHT1);
-    }else if(key == 'k' || key == 'K'){
-        glEnable(GL_LIGHT0);
-    }else if(key == 'i' || key == 'I'){
-        glDisable(GL_LIGHT0);
+    }else if(key == '1' || key == '!'){
+        if(GLOBAL.lightsOn[0]){
+            glDisable(GL_LIGHT0);
+            GLOBAL.lightsOn[0] = false;
+        }
+        else{
+            glEnable(GL_LIGHT0);
+            GLOBAL.lightsOn[0] = true;
+        }
+    }else if(key == '2' || key == '@'){
+        if(GLOBAL.lightsOn[1]){
+            glDisable(GL_LIGHT1);
+            GLOBAL.lightsOn[1] = false;
+        }
+        else{
+            glEnable(GL_LIGHT1);
+            GLOBAL.lightsOn[1] = true;
+        }
+    }else if(key == '3' || key == '#'){
+        if(GLOBAL.lightsOn[2]){
+            glDisable(GL_LIGHT2);
+            GLOBAL.lightsOn[2] = false;
+        }
+        else{
+            glEnable(GL_LIGHT2);
+            GLOBAL.lightsOn[2] = true;
+        }
+    }else if(key == '4' || key == '$'){
+        if(GLOBAL.lightsOn[3]){
+            glDisable(GL_LIGHT3);
+            GLOBAL.lightsOn[3] = false;
+        }
+        else{
+            glEnable(GL_LIGHT3);
+            GLOBAL.lightsOn[3] = true;
+        }
+    }else if(key == '5' || key == '%'){
+        if(GLOBAL.lightsOn[4]){
+            glDisable(GL_LIGHT4);
+            GLOBAL.lightsOn[4] = false;
+        }
+        else{
+            glEnable(GL_LIGHT4);
+            GLOBAL.lightsOn[4] = true;
+        }
     }
+
+
 
 
   
