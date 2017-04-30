@@ -110,7 +110,7 @@ void step(double &t, double &t2, double &theta, double &omega, double Nstep )
 
 
 
-#define Nstep 10.0
+#define Nstep 50.0
 
 
 
