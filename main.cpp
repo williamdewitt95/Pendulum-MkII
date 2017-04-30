@@ -329,7 +329,7 @@ void showFPS()//calculate the fps and the period, then display
     }
     else
         fps++;
-    sprintf(&str_fps[0], "FPS = %.0f",actualfps);//sprintf puts into formatted string
+    sprintf(&str_fps[0], "FPS = %.1f",actualfps);//sprintf puts into formatted string
 
 
     glPushMatrix();

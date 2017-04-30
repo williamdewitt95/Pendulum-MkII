@@ -164,7 +164,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 	glMatrixMode(GL_MODELVIEW);
 
     glEnable(GL_LIGHTING);
-    GLOBAL.lightsOn[5] = true;
+    GLOBAL.lightsOn[6] = true;
     glShadeModel(GL_SMOOTH);
 
     glPushMatrix();
@@ -283,6 +283,19 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 	glEnable(GL_LIGHT4);
 	GLOBAL.lightsOn[4] = true;
 
+
+	GLfloat light_5_position[4] = 	{ 5.0, 1.0, 15.0, 1.0 };
+    GLfloat light_5_ambient[4] =	{ 0.7, 0.7, 0.7, 1.0 };
+    GLfloat light_5_diffuse[4] = 	{ 0.0, 0.00, 0.0, 1.0 };
+    GLfloat light_5_specular[4] =	{ 0.0, 0.0, 0.0, 1.0 };
+
+	glLightfv(GL_LIGHT5, GL_POSITION, light_5_position);
+	glLightfv(GL_LIGHT5, GL_AMBIENT, light_5_ambient);
+	glLightfv(GL_LIGHT5, GL_DIFFUSE, light_5_diffuse);
+	glLightfv(GL_LIGHT5, GL_SPECULAR, light_5_specular);
+
+    // glEnable(GL_LIGHT5);
+    GLOBAL.lightsOn[5] = true;
 
     // glColorMaterial(GL_FRONT, GL_DIFFUSE);
     // glEnable(GL_COLOR_MATERIAL);
