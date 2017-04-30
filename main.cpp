@@ -148,12 +148,11 @@ void init(void)
     glClearColor (0.0, 0.0, 0.0, 0.0);
     glShadeModel (GL_FLAT);
 
-
+    //load the different textures that are used in the room and on the pendulum
 
     GLOBAL.walls.name = "images/wall.jpg";
     // GLOBAL.walls.height=256;
     // GLOBAL.walls.width=256;
-    // GLOBAL.walls.texID=0;
     loadTextures(GLOBAL.walls);
   
     GLOBAL.table.name="images/table.jpg";
@@ -284,7 +283,7 @@ void drawAxes(int length)
 }
 
 
-void look(){
+void look(){//changes the view
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     double aspect = (GLOBAL.WINDOW_MAX_X/(double)GLOBAL.WINDOW_MAX_Y);
@@ -302,9 +301,8 @@ void look(){
                 0,0,1
                 );
     }
-    // glMatrixMode(GL_MODELVIEW)
 }
-void phaseLook(){
+void phaseLook(){//changes view for the phase window
     glMatrixMode(GL_PROJECTION);//very simple setup, just doing an orthographic view
     glLoadIdentity();
     gluOrtho2D(0.0,100.0,100.0,0.0);
@@ -363,10 +361,8 @@ void showFPS()//calculate the fps and the period, then display
     if(prevOmega > 0.0 && omega < 0.0 || omega ==0){//apex of the swing on one side
         period = (currentTime - periodLast)/1000.0;
         periodLast = currentTime;
-        // printf("!!!! %f\n",period);
     }
     
-    // printf("%f, %f\n",prevOmega,omega);
     prevOmega = omega;
 
     glTranslatef(0.0,-5.0,0.0);
@@ -387,16 +383,13 @@ void display(void){
 
 
     spin();
-    // printf("theta: %f\n",theta);
     Polygon faces[6];
 
     Polygon tableTop[6];
     Polygon tableLegs[4];
     Polygon pendulumHolder[9];
     Polygon pendStick[12];
-    // Polygon pendBall[6];
 
-    // glEnable(GL_LIGHTING);
 
     if(GLOBAL.lightsOn[5]){
             glEnable(GL_LIGHTING);
@@ -412,7 +405,6 @@ void display(void){
     glLoadIdentity ();             /* clear the matrix */
     glEnable(GL_DEPTH_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    // reportView();//Places text informing user of current view
 
     if (DRAWAXIS) drawAxes(100);//large axis is better
     defineHouse(faces);
@@ -429,7 +421,6 @@ void display(void){
     drawFilledPendulumHolder(pendulumHolder, 9);
 
     definePendulumStick(pendStick);
-    // definePendulumBall(pendBall);
 
 
     drawFilledPendulum(pendStick, 12, theta*180.0/M_PI);
@@ -455,7 +446,6 @@ void display(void){
 
 
 void displayPhasePlot(void){//display function for phase plot
-    // printf("Phase window display\n");
     glClear (GL_COLOR_BUFFER_BIT);
     glColor3f (1.0, 0.0, 0.0);
 
@@ -516,7 +506,7 @@ void reshape (int w, int h)//resize
     glutPostRedisplay();
 }
 
-void phaseResize(int w, int h){
+void phaseResize(int w, int h){//resize of the phase window
     glViewport (0, 0, (GLsizei) w, (GLsizei) h); 
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
@@ -560,7 +550,7 @@ void keyboard( unsigned char key, int x, int y )
         camMove_vert += camMove_speed;
     }else if(key == ' '){
         camMove_vert -= camMove_speed;
-    }else if(key == '1' || key == '!'){
+    }else if(key == '1' || key == '!'){//turn on and off first light
         if(GLOBAL.lightsOn[0]){
             glDisable(GL_LIGHT0);
             GLOBAL.lightsOn[0] = false;
@@ -569,7 +559,7 @@ void keyboard( unsigned char key, int x, int y )
             glEnable(GL_LIGHT0);
             GLOBAL.lightsOn[0] = true;
         }
-    }else if(key == '2' || key == '@'){
+    }else if(key == '2' || key == '@'){//turn on and off second light
         if(GLOBAL.lightsOn[1]){
             glDisable(GL_LIGHT1);
             GLOBAL.lightsOn[1] = false;
@@ -578,7 +568,7 @@ void keyboard( unsigned char key, int x, int y )
             glEnable(GL_LIGHT1);
             GLOBAL.lightsOn[1] = true;
         }
-    }else if(key == '3' || key == '#'){
+    }else if(key == '3' || key == '#'){//turn on and off third light
         if(GLOBAL.lightsOn[2]){
             glDisable(GL_LIGHT2);
             GLOBAL.lightsOn[2] = false;
@@ -587,7 +577,7 @@ void keyboard( unsigned char key, int x, int y )
             glEnable(GL_LIGHT2);
             GLOBAL.lightsOn[2] = true;
         }
-    }else if(key == '4' || key == '$'){
+    }else if(key == '4' || key == '$'){//turn on and off fourth light
         if(GLOBAL.lightsOn[3]){
             glDisable(GL_LIGHT3);
             GLOBAL.lightsOn[3] = false;
@@ -596,7 +586,7 @@ void keyboard( unsigned char key, int x, int y )
             glEnable(GL_LIGHT3);
             GLOBAL.lightsOn[3] = true;
         }
-    }else if(key == '5' || key == '%'){
+    }else if(key == '5' || key == '%'){//turn on and off fifth light
         if(GLOBAL.lightsOn[4]){
             glDisable(GL_LIGHT4);
             GLOBAL.lightsOn[4] = false;
@@ -605,7 +595,7 @@ void keyboard( unsigned char key, int x, int y )
             glEnable(GL_LIGHT4);
             GLOBAL.lightsOn[4] = true;
         }
-    }else if(key == '0' || key == ')'){
+    }else if(key == '0' || key == ')'){//turn on and off lighting as a whole
         if(GLOBAL.lightsOn[5]){
             GLOBAL.lightsOn[5] = false;
         }
