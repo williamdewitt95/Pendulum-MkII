@@ -391,7 +391,7 @@ void display(void){
     Polygon pendStick[12];
 
 
-    if(GLOBAL.lightsOn[5]){
+    if(GLOBAL.lightsOn[6]){
             glEnable(GL_LIGHTING);
     }
     else{
@@ -595,12 +595,21 @@ void keyboard( unsigned char key, int x, int y )
             glEnable(GL_LIGHT4);
             GLOBAL.lightsOn[4] = true;
         }
-    }else if(key == '0' || key == ')'){//turn on and off lighting as a whole
+    }else if(key == '6' || key == '^'){//turn on and off sixth light
         if(GLOBAL.lightsOn[5]){
+            glDisable(GL_LIGHT5);
             GLOBAL.lightsOn[5] = false;
         }
         else{
+            glEnable(GL_LIGHT5);
             GLOBAL.lightsOn[5] = true;
+        }
+    }else if(key == '0' || key == ')'){//turn on and off lighting as a whole
+        if(GLOBAL.lightsOn[6]){
+            GLOBAL.lightsOn[6] = false;
+        }
+        else{
+            GLOBAL.lightsOn[6] = true;
         }
     }
 

@@ -295,7 +295,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 	glLightfv(GL_LIGHT5, GL_SPECULAR, light_5_specular);
 
     // glEnable(GL_LIGHT5);
-    GLOBAL.lightsOn[5] = true;
+    GLOBAL.lightsOn[5] = false;
 
     // glColorMaterial(GL_FRONT, GL_DIFFUSE);
     // glEnable(GL_COLOR_MATERIAL);
