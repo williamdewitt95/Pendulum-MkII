@@ -8,26 +8,6 @@ void drawFilledTableTop(Polygon faces[6]){//Draw the house (with fill)
     glPolygonMode(GL_BACK, GL_FILL);
     for(j=0;j<6;j++){//Table top always has 6 sides
 
-        // glColor3ub((j*25+36)% 255,//this gives a decent spread of colours, they are different enough from each other
-        //           (j*45)% 255,
-        //           (j*-36 +100)% 255);
-    	// glColor3ub(102, 51 , 0);
-
-     //    glBegin(GL_POLYGON);
-       
-     //    Vertex * temp = faces[j].firstVertex;
-     //    while(temp->next != faces[j].firstVertex){//go through vertices and add them - not a for loop because house could have pentagons on two sides
-     //    	glVertex3i(temp->getX(),
-     //    			   temp->getY(),
-     //    			   temp->getZ());
-     //    	temp = temp->next;
-     //    }
-
-     //    glVertex3i(temp->getX(),//add last vertex
-     //    		   temp->getY(),
-     //    		   temp->getZ());
-
-     //    glEnd();
         faces[j].drawPolygon();
     }
 }
@@ -129,23 +109,6 @@ void drawFilledTableLeg(Polygon faces[4]){//Draw the house (with fill)
     glPolygonMode(GL_BACK, GL_FILL);
     for(j=0;j<4;j++){//Table leg always has sides
 
-        // glColor3ub(0,255,0);
-
-        // glBegin(GL_POLYGON);
-       
-        // Vertex * temp = faces[j].firstVertex;
-        // while(temp->next != faces[j].firstVertex){//go through vertices and add them - not a for loop because house could have pentagons on two sides
-        // 	glVertex3i(temp->getX(),
-        // 			   temp->getY(),
-        // 			   temp->getZ());
-        // 	temp = temp->next;
-        // }
-
-        // glVertex3i(temp->getX(),//add last vertex
-        // 		   temp->getY(),
-        // 		   temp->getZ());
-
-        // glEnd();
         faces[j].drawPolygon();
     }
 }

@@ -164,6 +164,7 @@ void initLight(){///pretty simple lighting setup, with 5 lights
 	glMatrixMode(GL_MODELVIEW);
 
     glEnable(GL_LIGHTING);
+    GLOBAL.lightsOn[5] = true;
     glShadeModel(GL_SMOOTH);
 
     glPushMatrix();

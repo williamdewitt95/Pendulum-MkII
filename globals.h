@@ -61,7 +61,7 @@ public:
 	texture2D floor;
 	texture2D ceiling;
 
-	bool lightsOn[5];
+	bool lightsOn[6];
 
 };
 

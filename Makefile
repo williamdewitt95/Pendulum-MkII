@@ -44,7 +44,7 @@ $(BUILD_DIR)/pendulum.o : pendulum.cpp pendulum.h
 	$(CC) $(CFLAGS) $(COPTS) pendulum.cpp -c -o $(BUILD_DIR)/pendulum.o
 
 
-.PHONY: clean distclean
+.PHONY: clean distclean pristine
 
 clean:
 	rm -f build/*.o
@@ -54,3 +54,5 @@ pristine:
 	rm -rf build
 	rm -f pendulumMKII
 	touch *
+
+distclean: pristine
