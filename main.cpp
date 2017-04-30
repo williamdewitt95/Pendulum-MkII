@@ -205,18 +205,6 @@ void idle(){
 
 void spin(){//change the current rotation angle to the previous plus the change
 
-    // std::chrono::steady_clock::time_point t2 = steady_clock::now();//now
-    // std::chrono::duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-    // ti += time_span.count() ;
-    // t1 = t2;//t1 is the previous
-
-
-
-    // for (int i=0; i<rotSpeed; i++ ) {//only step certain number of steps, this can be changed with arrow keys
-    // while(ti<t2){
-      // step( ti, theta, omega, Nstep);
-    // }
-    // } 
     double currTime = glutGet(GLUT_ELAPSED_TIME)/1000.0 ;
     while( (float)simTime < (float)currTime){ step(simTime,currTime, theta, omega, Nstep); }
     // printf("\n%f ,  %f",simTime,glutGet(GLUT_ELAPSED_TIME)/1000.0 );
@@ -317,7 +305,7 @@ void look(){
     // glMatrixMode(GL_MODELVIEW)
 }
 void phaseLook(){
-    glMatrixMode(GL_PROJECTION);
+    glMatrixMode(GL_PROJECTION);//very simple setup, just doing an orthographic view
     glLoadIdentity();
     gluOrtho2D(0.0,100.0,100.0,0.0);
 }
@@ -329,12 +317,12 @@ int oldTime, currentTime;
 float actualfps, fps = 0.0;
 
 
-void showFPS()
+void showFPS()//calculate the fps and the period, then display
 {
 
     currentTime = glutGet(GLUT_ELAPSED_TIME);
     char str_fps[15];
-    if ( (currentTime - oldTime) > 1000 )     
+    if ( (currentTime - oldTime) > 1000 )    //less then one frame per second 
 
     {
         actualfps = fps;
@@ -343,7 +331,7 @@ void showFPS()
     }
     else
         fps++;
-    sprintf(&str_fps[0], "FPS = %.0f",actualfps);
+    sprintf(&str_fps[0], "FPS = %.0f",actualfps);//sprintf puts into formatted string
 
 
     glPushMatrix();
@@ -372,7 +360,7 @@ void showFPS()
     }
     glPopMatrix();
 
-    if(prevOmega > 0.0 && omega < 0.0 || omega ==0){
+    if(prevOmega > 0.0 && omega < 0.0 || omega ==0){//apex of the swing on one side
         period = (currentTime - periodLast)/1000.0;
         periodLast = currentTime;
         // printf("!!!! %f\n",period);
@@ -439,26 +427,27 @@ void display(void){
 
     drawFilledPendulum(pendStick, 12, theta*180.0/M_PI);
 
-    GLfloat light_0_position[4] =   { 10.0,  1.0,  11.0, 1.0 };
 
+    //uncomment to se position of the first light
+    // GLfloat light_0_position[4] =   { 0.0, 1.0, 0.0, 1.0 };
     // glPushMatrix();
     // glLoadIdentity();
     // glTranslatef(light_0_position[0],light_0_position[1],light_0_position[2]); 
     // glutSolidSphere(1.5,20,20);
     // glPopMatrix();
+
     glDisable(GL_LIGHTING);
     showFPS();
-    // displayPhasePlot();
 
     glutSwapBuffers();
     glutPostRedisplay();//Marks display to draw again
 
-    glutSetWindow(phaseWindow);
+    glutSetWindow(phaseWindow);//change the window so it updates the phase plot
 
 }
 
 
-void displayPhasePlot(void){
+void displayPhasePlot(void){//display function for phase plot
     // printf("Phase window display\n");
     glClear (GL_COLOR_BUFFER_BIT);
     glColor3f (1.0, 0.0, 0.0);
@@ -468,6 +457,7 @@ void displayPhasePlot(void){
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
+    //we want to translate to the position we are drawing at
     glTranslatef(50.0*sin(theta)+50.0,50.0*sin(omega)+50.0,0.0);//50,50 is the middle of the screen
  
     glutSolidSphere(1.0,36,36);
@@ -475,7 +465,7 @@ void displayPhasePlot(void){
 
     glutSwapBuffers();
     glutPostRedisplay();
-    glutSetWindow(mainWindow);
+    glutSetWindow(mainWindow);//change the window so it updates the pendulum and room
 
 
 }
@@ -734,7 +724,7 @@ int main(int argc, char** argv){
   
 
 
-    glutInitWindowSize (100, 100);
+    glutInitWindowSize (100, 100);//make the second window
      glutInitWindowPosition (100, 100);
     phaseWindow = glutCreateWindow ("Pendulum Phase Plot");
      initPhase();

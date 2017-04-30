@@ -157,7 +157,9 @@ void loadTextures(texture2D &texture){//we will read raw image files (the 2d arr
 }
 
 
-void initLight(){
+void initLight(){///pretty simple lighting setup, with 5 lights
+	//has ambient, diffuse, specular, and three of them are spotlights
+	
 
 	glMatrixMode(GL_MODELVIEW);
 

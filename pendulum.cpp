@@ -8,6 +8,11 @@ void drawFilledPendulumHolder(Polygon faces[], int numFaces){//Draw the house (w
 
         faces[j].drawPolygon();
     }
+    glPushMatrix();
+    glTranslated(5.0,5.0,10.9);
+    glRotated(90.0,1.0,0.0,0.0);
+    glutSolidTeapot(1.0);//show the scale of the room and the pendulum through familiar object
+    glPopMatrix();
 }
 
 
