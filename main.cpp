@@ -40,7 +40,7 @@ double theta=initialRot*M_PI/180;
 double omega=0;
 double prevOmega=omega;
 
-static double penLength = .09938;  // Length of pendulum
+static double penLength = .309938;  // Length of pendulum
 static double grav = 9.80665;  // Normalized gravitational constant
 static double b_FrictionConstant = 0.00;  // Frictional damping constant
 static double mass = 1.00;  // Mass in normalized gravitational units
@@ -190,7 +190,7 @@ void init(void)
 
 
 void initPhase(void){
-    glClearColor(0.0,0.0,1.0,0.0);
+    glClearColor(0.0,0.0,0.1,0.0);
 
 }
 
@@ -468,14 +468,8 @@ void displayPhasePlot(void){
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
-    glTranslatef(10.0*cos(theta)+50.0,10.0*sin(omega)+50.0,0.0);
-    // glTranslatef(50.0,50.0,0.0);
-    // glBegin(GL_POINT);
-
-    // // glVertex3f(1.0*cos(theta), 1.0*sin(omega), 0.0);
-
-    // glVertex3f(0.0,0.0,0.0);
-    // glEnd();
+    glTranslatef(50.0*sin(theta)+50.0,50.0*sin(omega)+50.0,0.0);//50,50 is the middle of the screen
+ 
     glutSolidSphere(1.0,36,36);
     glPopMatrix();
 
