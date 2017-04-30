@@ -19,6 +19,9 @@ double camMove_strafe = 0;
 double camMove_vert = 0;
 const double camMove_speed = 0.25 / 2.0;
 
+int mainWindow;
+int phaseWindow;
+
 //==================================================================================
 using namespace std::chrono;
 
@@ -187,7 +190,7 @@ void init(void)
 
 
 void initPhase(void){
-    glClearColor(0.0,0.0,0.0,0.0);
+    glClearColor(0.0,0.0,1.0,0.0);
 
 }
 
@@ -312,6 +315,11 @@ void look(){
                 );
     }
     // glMatrixMode(GL_MODELVIEW)
+}
+void phaseLook(){
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0,100.0,100.0,0.0);
 }
 
 
@@ -440,21 +448,41 @@ void display(void){
     // glPopMatrix();
     glDisable(GL_LIGHTING);
     showFPS();
+    // displayPhasePlot();
 
-    // glFlush();
     glutSwapBuffers();
     glutPostRedisplay();//Marks display to draw again
+
+    glutSetWindow(phaseWindow);
 
 }
 
 
 void displayPhasePlot(void){
+    // printf("Phase window display\n");
     glClear (GL_COLOR_BUFFER_BIT);
-    glColor3f (1.0, 1.0, 1.0);
+    glColor3f (1.0, 0.0, 0.0);
 
+    phaseLook();
 
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(10.0*cos(theta)+50.0,10.0*sin(omega)+50.0,0.0);
+    // glTranslatef(50.0,50.0,0.0);
+    // glBegin(GL_POINT);
 
+    // // glVertex3f(1.0*cos(theta), 1.0*sin(omega), 0.0);
+
+    // glVertex3f(0.0,0.0,0.0);
+    // glEnd();
+    glutSolidSphere(1.0,36,36);
+    glPopMatrix();
+
+    glutSwapBuffers();
     glutPostRedisplay();
+    glutSetWindow(mainWindow);
+
 
 }
 
@@ -495,6 +523,15 @@ void reshape (int w, int h)//resize
     glFrustum (-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
     glViewport (0, 0, (GLsizei) w, (GLsizei) h); 
     glutPostRedisplay();
+}
+
+void phaseResize(int w, int h){
+    glViewport (0, 0, (GLsizei) w, (GLsizei) h); 
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity ();
+    glFrustum (-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
+    glutPostRedisplay();
+    glMatrixMode(GL_MODELVIEW);
 }
 
 void moveCam(){
@@ -669,7 +706,7 @@ int main(int argc, char** argv){
     glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize (SCALABLE_WINDOW_MAX_X, SCALABLE_WINDOW_MAX_Y); 
     glutInitWindowPosition (100, 100);
-    glutCreateWindow (argv[0]);
+    mainWindow = glutCreateWindow (argv[0]);
     init ();
     glutDisplayFunc(display); 
     glutReshapeFunc(windowResize);
@@ -701,10 +738,15 @@ int main(int argc, char** argv){
     menu = glutCreateMenu(doNothing);
     glutAddSubMenu("Axes", axis);
   
+
+
     glutInitWindowSize (100, 100);
      glutInitWindowPosition (100, 100);
-    glutCreateWindow ("Pendulum Phase Plot");
+    phaseWindow = glutCreateWindow ("Pendulum Phase Plot");
+     initPhase();
     glutDisplayFunc(displayPhasePlot); 
+    glutReshapeFunc(phaseResize);
+
 
 
     glutAttachMenu(GLUT_MIDDLE_BUTTON);
