@@ -13,7 +13,7 @@ typedef struct polygonList {
 void defineHouse( Polygon *face );
 void drawFilledHouse(Polygon *face);
 void rotateHouse(double rotX, double rotY, double rotZ, bool b);
-void helloWorld();
+// void helloWorld();
 
 
 
